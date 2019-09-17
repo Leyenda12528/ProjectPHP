@@ -43,12 +43,14 @@ class ViajeController extends Controller
     public function getAviones(Request $request){
         if($request->ajax()){
             $aviones_disponibles =[];
+            $clasemodelo;
             $aviones = Avion::orderBy('nombre','asc')->get();
             $aviones_ocupados = Viaje::where('fecha',$request->fecha)->get();
             if($request->avion){
                 $navion = Avion::where('id',$request->avion)->first();
                 $aviones_disponibles[] = $navion;
                 $modelo = $navion->modelo_id;
+                $clasemodelo = Clasemodelo::where('modelo_id',$modelo)->get();
             }//if avion
                 foreach ($aviones as $avion) {
                     $i = false;
@@ -57,8 +59,23 @@ class ViajeController extends Controller
                             $i = true;          
                     }//foreach aviones ocupados
                     if($request->avion){
-                        if(!$i && $avion->modelo_id == $modelo)
-                            $aviones_disponibles[]=$avion;
+                        if(!$i){
+                            
+                            $ct = Clasemodelo::where('modelo_id',$avion->modelo_id)->get();
+                            foreach ($clasemodelo as $row) {
+                                $flag = false;
+                                foreach ($ct as $row1) {
+                                    if($row->clase_id == $row1->clase_id && $row->capacidad <= $row1->capacidad)
+                                        $flag = true;
+                                    
+                                }
+                                if($flag == false)
+                                    break;
+                                $aviones_disponibles[]=$avion;
+                            }
+
+                            
+                        }
                     }
                     else{
                         if(!$i)

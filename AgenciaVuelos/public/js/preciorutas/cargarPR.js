@@ -49,7 +49,7 @@ function cargarPrecios(e){
 }//cargarPrecios
 
 function cargarClaseTarifas(){
-	fetch('http://127.0.0.1:8000/clasetarifa',{
+	fetch('http://127.0.0.1:8000/clasetarifa/create',{
 		headers:{
 			'X-Requested-With' : 'XMLHttpRequest'
 		}

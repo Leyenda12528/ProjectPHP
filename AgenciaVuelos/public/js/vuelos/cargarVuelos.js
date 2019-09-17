@@ -43,7 +43,7 @@
  	}
 
 function cargarRutas() {
-	fetch('http://127.0.0.1:8000/rutas',{
+	fetch('http://127.0.0.1:8000/rutas/create',{
 		headers:{
 			'X-Requested-With' : 'XMLHttpRequest'
 		}
