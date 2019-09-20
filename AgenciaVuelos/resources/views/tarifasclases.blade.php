@@ -4,9 +4,55 @@
 
 @section('contenido')
 
+<div class="forms">
+	
+<h2>Registro</h2>
 <div class="divisiones">
-	<div>
-		<h2>Clases</h2>
+<div>
+			
+			<form id='formularioClase' class='form-group'>
+				@csrf
+				@include('clases.form')
+				<p class="error" id='mensajeClase'></p>
+				<button type="submit" class='btn btn-gold' id='buttonClase'>Registrar</button>
+			</form>
+		</div>
+
+		<div>
+			
+			<form id='formularioTarifa' class='form-group'>
+				@csrf
+				@include('tarifas.form')
+				<p class="error" id='mensajeTarifa'></p>
+				<button type="submit" class='btn btn-gold' id='buttonTarifa'>Registrar</button>
+			</form>
+		</div>
+
+		<div>
+				
+				<form id='formularioct' class='form-group'>
+					@include('clasetarifa.form')
+					<p class="error" id='mensaject'></p>
+					<button type="submit" class='btn btn-gold' id='buttonct'>Registrar</button>
+				</form>
+			</div>
+</div>
+</div>
+
+<div class="tablas">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Clases</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tarifas</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Relaciones clases y tarifas</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 		<table class='table table-hover'>
 			<thead>
 				<tr>
@@ -17,19 +63,8 @@
 			</thead>
 			<tbody id='tablaClases'>
 		    </tbody>
-	    </table>
-		<br>
-		<div>
-			<h2 id='mensajeClase'></h2>
-			<form id='formularioClase' class='form-group'>
-				@csrf
-				@include('clases.form')
-				<button type="submit" class='btn btn-gold' id='buttonClase'>Registrar</button>
-			</form>
-		</div>
-	</div>{{-- Clases --}}
-	<div>
-		<h2>Tarifas</h2>
+	    </table></div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 		<table class='table table-hover'>
 			<thead>
 				<tr>
@@ -40,20 +75,8 @@
 			</thead>
 			<tbody id='tablaTarifas'>
 		    </tbody>
-	    </table>
-		<br>
-		<div>
-			<h2 id='mensajeTarifa'></h2>
-			<form id='formularioTarifa' class='form-group'>
-				@csrf
-				@include('tarifas.form')
-				<button type="submit" class='btn btn-gold' id='buttonTarifa'>Registrar</button>
-			</form>
-		</div>
-	</div>{{-- Tarifas --}}
-
-	<div>
-		<h2>Relaciones clases y tarifas</h2>
+	    </table></div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">	
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -66,22 +89,11 @@
 			<tbody id="tablaClaseTarifa">
 				
 			</tbody>
-		</table>
-			<br>
-			<div>
-				<h2 id='mensaject'></h2>
-				<form id='formularioct' class='form-group'>
-					@include('clasetarifa.form')
-					<button type="submit" class='btn btn-gold' id='buttonct'>Registrar</button>
-				</form>
-			</div>
-		
-	</div>
-
-	
+		</table></div>
 </div>
-	
-  <div class="modal fade" id="addPokemon" role="dialog" aria-hidden="true">
+</div>
+
+	  <div class="modal fade" id="addPokemon" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

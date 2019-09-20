@@ -11,6 +11,7 @@
 <body id='body'>
 	<nav class="navbar navbar-expand-lg navbar-ligth">
 		<li class="navbar-brand logo"><a href="">ABBIANKKA</a></li>
+		<li class="nav-item  active"><a class="nav-link" href="http://127.0.0.1:8000/clasetarifa"><span class="icon"><img src="img/home.svg" alt=""></span>Inicio</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/clasetarifa"><span class="icon"><img src="img/seat.svg" alt=""></span>Clases/Tarifas</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/rutas"><span class="icon"><img src="img/route.svg" alt=""></span>Ciudades/Rutas</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/aviones"><span class="icon"><img src="img/airplane.svg" alt=""></span>Aviones</a></li>
