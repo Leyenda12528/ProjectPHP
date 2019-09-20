@@ -5,27 +5,88 @@
 --semi-gold:#f5f4ef;
 --grey:rgba(30, 30, 45,0.7);
 --white:#ffffff;
+-merri:'Merriweather', serif;
+--barlow:'Barlow Condensed', sans-serif;
 }
 
 *{
 	outline: none;
 	text-decoration: none;
+	list-style: none;
 }
 
-.navbar{
+h1,h2,h3{
+	
+    font-family: var(--barlow);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+h2{
+	text-align: center;
+	color: var(--red);
+	margin-bottom: 20px; 
+}
+
+tr{
+	text-align: center;
+}
+label{
+	color: var(--secundary);
+	font-weight: 600;
+}
+
+
+#body{
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+#body .contenido{
+	flex: 1;
+	background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+#body .navbar{
 	padding: 20px 0;
+	flex-direction: column;
+	width: 250px;
 	background: var(--secundary);
 	justify-content: space-around;
+	align-content: flex-start;
+	height: 100vh;
+	background-image: linear-gradient(to top, #09203f 0%,  #1d1f2c 100%);
 
 }
-
-.navbar .navbar-brand{
+#body .navbar .navbar-brand a{
+	color: var(--red);
+	font-family: var(--barlow);
+	font-size: 50px;
+}
+#body .navbar .nav-item {
+	width: 100%;
+}
+#body .navbar .nav-item .nav-link{
 	color: white;
+	text-align: left;
+}
+#body .navbar .nav-item:hover{
+	border-right: 5px solid var(--main);
+	background: rgba(255,255,255,0.05);
 }
 
-.navbar .navbar-brand:hover{
+#body .navbar .nav-item:hover .nav-link{
 	color: var(--main);
 }
+#body .navbar .nav-item .icon{
+	margin-right: 20px;
+}
+
+#body .navbar .nav-item .icon img{
+	width: 35px;
+	height: 35px;
+}
+
+
 .divisiones {
     display: grid;
 	grid-template-columns: repeat(3,1fr);
@@ -71,20 +132,6 @@
 .table thead th{
 	border-bottom: 1px solid var(--grey);
 	background: rgba(30, 30, 45,0.3);
-}
-
-h2{
-	text-align: center;
-	color: var(--red);
-	margin-bottom: 20px; 
-}
-
-tr{
-	text-align: center;
-}
-label{
-	color: var(--secundary);
-	font-weight: 600;
 }
 
 .modal-header{
