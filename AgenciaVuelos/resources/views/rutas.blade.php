@@ -24,7 +24,7 @@
 			<form id='formularioCiudad'>
 				@csrf
 				@include('ciudades.form')
-				<button type="submit">Registrar</button>
+				<button type="submit" class="btn btn-gold">Registrar</button>
 			</form>
 		</div>
 	</div>{{-- Ciudades --}}
@@ -48,7 +48,7 @@
 			<form id='formularioRuta' class="form-group">
 				@csrf
 				@include('rutas.form')
-				<button type="submit">Registrar</button>
+				<button type="submit" class="btn btn-gold">Registrar</button>
 			</form>
 		</div>
 	</div>{{-- Rutas --}}	
@@ -69,7 +69,7 @@
         		<form id='formularioEditarCiudad' class="form-group">
 					@csrf
 					@include('ciudades.form')
-					<button type="submit">Editar</button>
+					<button type="submit" class="btn btn-gold">Editar</button>
 				</form>
         	</div>
         	<div class="rutasModal">
@@ -77,14 +77,14 @@
         		<form id='formularioEditarRutas' class="form-group">
 					@csrf
 					@include('rutas.form')
-					<button type="submit">Editar</button>
+					<button type="submit" class="btn btn-gold">Editar</button>
 				</form>
         	</div>
         	<div class="PRModal">
         		<h2 id='mensajeEditarPR'></h2>
         		<form id='formularioEditarPrecioruta'>
         			@include('preciorutas.form')
-        			<button type="submit">Editar</button>
+        			<button type="submit" class="btn btn-gold">Editar</button>
         		</form>
         	</div>
         </div>
@@ -107,7 +107,7 @@
         		<form id='formularioPrecioruta'>
 					@csrf
 					@include('preciorutas.form')
-					<button type="submit">Registrar</button>
+					<button type="submit" class="btn btn-gold" >Registrar</button>
 				</form>
 				<br>
         	</div>

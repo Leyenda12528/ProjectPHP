@@ -1,0 +1,96 @@
+:root{
+	--main:#d4c1a0;
+--secundary:#1d1f2c;
+--red:#aa3f45;
+--semi-gold:#f5f4ef;
+--grey:rgba(30, 30, 45,0.7);
+--white:#ffffff;
+}
+
+*{
+	outline: none;
+	text-decoration: none;
+}
+
+.navbar{
+	padding: 20px 0;
+	background: var(--secundary);
+	justify-content: space-around;
+
+}
+
+.navbar .navbar-brand{
+	color: white;
+}
+
+.navbar .navbar-brand:hover{
+	color: var(--main);
+}
+.divisiones {
+    display: grid;
+	grid-template-columns: repeat(3,1fr);
+}
+.divisiones >div{
+	padding: 0 10px;
+	border-right:1px solid var(--grey);
+}
+.divisiones >div:last-of-type{
+	border-right: none;
+}
+.form-control{
+	border-radius: 15px;
+	padding: 5px 10px;
+	border-color: var(--grey);
+}
+.form-control::placeholder{
+	color: var(--secundary);
+}
+.btn{
+	border-radius: 15px;
+	padding: 5px 15px;
+}
+.btn-gold{
+	background: var(--main);
+	border-radius: 15px;
+	color: var(--secundary);
+	margin-top: 20px;
+	font-weight: 600;
+}
+.btn-gold:hover{
+	background: var(--secundary);
+	color: var(--main);
+	border-radius: 15px;
+}
+
+.table-hover tbody tr:hover{
+	background-color: var(--semi-gold);
+}
+.table td, .table th{
+	border-color: var(--grey);
+}
+.table thead th{
+	border-bottom: 1px solid var(--grey);
+	background: rgba(30, 30, 45,0.3);
+}
+
+h2{
+	text-align: center;
+	color: var(--red);
+	margin-bottom: 20px; 
+}
+
+tr{
+	text-align: center;
+}
+label{
+	color: var(--secundary);
+	font-weight: 600;
+}
+
+.modal-header{
+	background: var(--semi-gold);
+	color: var(--red);
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}

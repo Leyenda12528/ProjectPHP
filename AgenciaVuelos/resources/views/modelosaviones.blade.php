@@ -26,7 +26,7 @@
 			<form id='formularioModelo'>
 				@csrf
 				@include('modelos.form')
-				<button type="submit">Registrar</button>
+				<button type="submit" class="btn btn-gold">Registrar</button>
 			</form>
 		</div>
 	</div>{{-- Modelos --}}
@@ -49,7 +49,7 @@
 			<form id='formularioAvion' class="form-group">
 				@csrf
 				@include('aviones.form')
-				<button type="submit">Registrar</button>
+				<button type="submit" class="btn btn-gold">Registrar</button>
 			</form>
 		</div>
 	</div>{{-- Aviones --}}	
@@ -70,7 +70,7 @@
         		<form id='formularioEditarModelo' class="form-group">
 					@csrf
 					@include('modelos.form')
-					<button type="submit">Editar</button>
+					<button type="submit" class="btn btn-gold">Editar</button>
 				</form>
         	</div>
         	<div class="cmModal">
@@ -85,7 +85,7 @@
         		<h2 id='mensajeEditarAvion'></h2>
         		<form id='formularioEditarAvion'>
         			@include('aviones.form')
-        			<button type="submit">Editar</button>
+        			<button type="submit" class="btn btn-gold">Editar</button>
         		</form>
         	</div>
         </div>

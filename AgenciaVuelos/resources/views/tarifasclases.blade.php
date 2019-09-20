@@ -24,7 +24,7 @@
 			<form id='formularioClase' class='form-group'>
 				@csrf
 				@include('clases.form')
-				<button type="submit" id='buttonClase'>Registrar</button>
+				<button type="submit" class='btn btn-gold' id='buttonClase'>Registrar</button>
 			</form>
 		</div>
 	</div>{{-- Clases --}}
@@ -47,7 +47,7 @@
 			<form id='formularioTarifa' class='form-group'>
 				@csrf
 				@include('tarifas.form')
-				<button type="submit" id='buttonTarifa'>Registrar</button>
+				<button type="submit" class='btn btn-gold' id='buttonTarifa'>Registrar</button>
 			</form>
 		</div>
 	</div>{{-- Tarifas --}}
@@ -72,7 +72,7 @@
 				<h2 id='mensaject'></h2>
 				<form id='formularioct' class='form-group'>
 					@include('clasetarifa.form')
-					<button type="submit" id='buttonct'>Registrar</button>
+					<button type="submit" class='btn btn-gold' id='buttonct'>Registrar</button>
 				</form>
 			</div>
 		
@@ -96,7 +96,7 @@
         		<form id='formularioEditarTarifa' class='form-group'>
 					@csrf
 					@include('tarifas.form')
-					<button type="submit" id='buttonEditarTarifa'>Editar</button>
+					<button type="submit" class="btn btn-gold" id='buttonEditarTarifa'>Editar</button>
 				</form>
         	</div>
         	<div class="clasesModal">
@@ -104,14 +104,14 @@
         		<form id='formularioEditarClase' class='form-group'>
 					@csrf
 					@include('clases.form')
-					<button type="submit" id='buttonEditarClase'>Editar</button>
+					<button type="submit" id='buttonEditarClase' class="btn btn-gold">Editar</button>
 				</form>
         	</div>
         	<div class="ctModal">
         		<h2 id='mensajeEditarct'></h2>
         		<form id='formularioEditarCT' class='form-group'>
         			@include('clasetarifa.form')
-        			<button type="submit">Editar</button>
+        			<button type="submit" class="btn btn-gold">Editar</button>
         		</form>
         	</div>
         </div>
@@ -135,12 +135,6 @@
 <script type="text/javascript" src='/js/clasestarifas/editar.js'></script>	
 
 <script type="text/javascript" src='/js/clasestarifas/validar.js'></script>
-<style type="text/css">
-	.divisiones{
-		display: grid;
-		grid-template-columns: repeat(3,1fr);
-		grid-column-gap: 20px;
-	}
-</style>
+		
 @endsection	
 

@@ -11,7 +11,7 @@
 				<form id='formularioVuelo'>
 					@csrf
 					@include('vuelos.form')
-					<button type="submit">Registrar</button>
+					<button type="submit" class="btn btn-gold">Registrar</button>
 				</form>
 			</div>
 
@@ -52,7 +52,7 @@
         		<form id='formularioEditarVuelo' class="form-group">
 					@csrf
 					@include('vuelos.form')
-					<button type="submit">Editar</button>
+					<button type="submit" class="btn btn-gold">Editar</button>
 				</form>
         	</div>
         </div>
