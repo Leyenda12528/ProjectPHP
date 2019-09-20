@@ -9,4 +9,3 @@
 <br>
 <label>Avión</label>
 <select name="avion" id="selectAviones" class="form-control"></select>
-<br>

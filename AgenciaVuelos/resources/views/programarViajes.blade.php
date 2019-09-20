@@ -3,21 +3,33 @@
 @section('titulo','Programar vuelos')
 
 @section('contenido')
-	<div>
-		<h2>Programar vuelos</h2>
-		<div>
-			<h2 id='mensajeVuelo'></h2>
-			<div class="container">
-				<form id='formularioVuelo'>
+
+
+<div class="forms">
+	
+<h2>Registro</h2>
+<div class="divisiones">
+<div>
+				<form id='formularioVuelo' class="form-group">
 					@csrf
 					@include('vuelos.form')
+					<p class="error" id='mensajeVuelo'></p>
 					<button type="submit" class="btn btn-gold">Registrar</button>
 				</form>
-			</div>
-
 		</div>
-		<br><br>
-		<table class="table table-hover">
+</div>
+</div>
+
+
+<div class="tablas">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Vuelos programados</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Id vuelo</th>
@@ -33,9 +45,9 @@
 			</thead>
 			<tbody id='tablaVuelos'>
 		    </tbody>
-	    </table>
-		<br>
-	</div>{{-- Vuelos --}}
+	    </table>	
+</div>
+</div>
 
   <div class="modal fade" id="addPokemon" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">

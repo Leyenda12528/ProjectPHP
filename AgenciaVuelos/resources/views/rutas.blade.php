@@ -4,10 +4,45 @@
 
 @section('contenido')
 
+<div class="forms">
+	
+<h2>Registro</h2>
 <div class="divisiones">
-	<div>
-		<h2>Ciudades</h2>
-		<table class="table table-hover">
+<div>
+
+			<form id='formularioCiudad' class="form-group">
+				@csrf
+				@include('ciudades.form')
+				<p class="error" id='mensajeCiudad'></p>
+				<button type="submit" class="btn btn-gold">Registrar</button>
+			</form>
+		</div>
+
+		<div>
+		
+			<form id='formularioRuta' class="form-group">
+				@csrf
+				@include('rutas.form')
+				<p class="error" id='mensajeRuta'></p>
+				<button type="submit" class="btn btn-gold">Registrar</button>
+			</form>
+		</div>
+</div>
+</div>
+
+
+<div class="tablas">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Ciudades</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Rutas</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -17,20 +52,10 @@
 			</thead>
 			<tbody id='tablaCiudades'>
 		    </tbody>
-	    </table>
-		<br>
-		<div>
-			<h2 id='mensajeCiudad'></h2>
-			<form id='formularioCiudad'>
-				@csrf
-				@include('ciudades.form')
-				<button type="submit" class="btn btn-gold">Registrar</button>
-			</form>
-		</div>
-	</div>{{-- Ciudades --}}
-	<div>
-		<h2>Rutas</h2>
-		<table class="table table-hover">
+	    </table>		
+</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Ciudad origen</th>
@@ -42,17 +67,11 @@
 			</thead>
 			<tbody id='tablaRutas'>
 		    </tbody>
-	    </table>
-		<div>
-			<h2 id='mensajeRuta'></h2>
-			<form id='formularioRuta' class="form-group">
-				@csrf
-				@include('rutas.form')
-				<button type="submit" class="btn btn-gold">Registrar</button>
-			</form>
-		</div>
-	</div>{{-- Rutas --}}	
+		</table>
+	</div>
 </div>
+</div>
+
 	
   <div class="modal fade" id="addPokemon" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -92,6 +111,8 @@
     </div>
   </div>
  
+
+
    <div class="modal fade" id="precios" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

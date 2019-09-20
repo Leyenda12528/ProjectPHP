@@ -129,6 +129,7 @@ label {
 #body .contenido .forms .divisiones>div .form-group {
     background: white;
     border-radius: 15px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
     padding: 10px;
 }
 
@@ -207,10 +208,21 @@ label {
 #body .contenido .table thead th:last-of-type{
     border-radius: 0px 15px 0 0;
 }
-#body .contenido .modal-header {
-    background: var(--semi-gold);
-    color: var(--red);
+#body .contenido .modal{
+    background: rgba(0,0,0,0.5);
+}
+#body .contenido .modal .modal-dialog{
+    background: none;
+    border: none;
+}
+#body .contenido .modal .modal-content{
+    border-radius: 15px;
+}
+#body .contenido .modal .modal-header {
+    background: var(--red);
+    color: var(--semi-gold);
     font-weight: 700;
+    border-radius: 15px 15px 0 0;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
