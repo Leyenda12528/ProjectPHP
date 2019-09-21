@@ -3,11 +3,47 @@
 @section('titulo','Modelos&Aviones')
 
 @section('contenido')
-
+<div class="forms">
+	
+<h2>Registro</h2>
 <div class="divisiones">
-	<div>
-		<h2>Modelos</h2>
-		<table class="table table-hover">
+<div>
+
+
+			<form id='formularioModelo' class="form-group">
+				@csrf
+				@include('modelos.form')
+				<p class="error" id='mensajeModelo'></p>
+				<button type="submit" class="btn btn-gold">Registrar</button>
+			</form>
+		</div>
+
+		<div>
+		
+		
+			<form id='formularioAvion' class="form-group">
+				@csrf
+				@include('aviones.form')
+				<p class="error" id='mensajeAvion'></p>
+				<button type="submit" class="btn btn-gold">Registrar</button>
+			</form>
+		</div>
+</div>
+</div>
+
+
+<div class="tablas">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Modelos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Aviones</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -19,20 +55,10 @@
 			</thead>
 			<tbody id='tablaModelos'>
 		    </tbody>
-	    </table>
-		<br>
-		<div>
-			<h2 id='mensajeModelo'></h2>
-			<form id='formularioModelo'>
-				@csrf
-				@include('modelos.form')
-				<button type="submit">Registrar</button>
-			</form>
-		</div>
-	</div>{{-- Modelos --}}
-	<div>
-		<h2>Aviones</h2>
-		<table class="table table-hover">
+	    </table>	
+</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -44,16 +70,10 @@
 			<tbody id='tablaAviones'>
 		    </tbody>
 	    </table>
-		<div>
-			<h2 id='mensajeAvion'></h2>
-			<form id='formularioAvion' class="form-group">
-				@csrf
-				@include('aviones.form')
-				<button type="submit">Registrar</button>
-			</form>
-		</div>
-	</div>{{-- Aviones --}}	
+	</div>
 </div>
+</div>
+
 	
   <div class="modal fade" id="addPokemon" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -70,7 +90,7 @@
         		<form id='formularioEditarModelo' class="form-group">
 					@csrf
 					@include('modelos.form')
-					<button type="submit">Editar</button>
+					<button type="submit" class="btn btn-gold">Editar</button>
 				</form>
         	</div>
         	<div class="cmModal">
@@ -85,7 +105,7 @@
         		<h2 id='mensajeEditarAvion'></h2>
         		<form id='formularioEditarAvion'>
         			@include('aviones.form')
-        			<button type="submit">Editar</button>
+        			<button type="submit" class="btn btn-gold">Editar</button>
         		</form>
         	</div>
         </div>
