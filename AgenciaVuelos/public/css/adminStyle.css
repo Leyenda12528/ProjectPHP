@@ -17,6 +17,8 @@
 
 .btn {
     border-radius: 15px;
+    font-family: var(--barlow);
+    font-size: 20px;
     padding: 5px 15px;
 }
 
@@ -282,6 +284,7 @@ label {
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    font-family: var(--merri);
     height: 100vh;
 }
 #login h2{
@@ -308,5 +311,7 @@ label {
     color: var(--secundary);
     display: block;
     margin-top: 20px;
+    font-size: 14px;
+    font-family: var(--merri);
     
 }
