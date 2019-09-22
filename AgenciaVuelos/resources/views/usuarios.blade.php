@@ -67,23 +67,6 @@
       </div>
     </div>
   </div>
-
-<script type="text/javascript" src='/js/tarifas/cargarTarifas.js'></script>
-<script type="text/javascript" src='/js/tarifas/crearTarifa.js'></script>
-<script type="text/javascript" src='/js/tarifas/eliminarTarifa.js'></script>
-<script type="text/javascript" src='/js/tarifas/editarTarifa.js'></script>
-
-<script type="text/javascript" src='/js/clases/cargarClases.js'></script>
-<script type="text/javascript" src='/js/clases/crearClase.js'></script>
-<script type="text/javascript" src='/js/clases/eliminarClase.js'></script>
-<script type="text/javascript" src='/js/clases/editarClase.js'></script>
-
-<script type="text/javascript" src='/js/clasestarifas/cargar.js'></script>	
-<script type="text/javascript" src='/js/clasestarifas/crear.js'></script>	
-<script type="text/javascript" src='/js/clasestarifas/eliminar.js'></script>	
-<script type="text/javascript" src='/js/clasestarifas/editar.js'></script>	
-
-<script type="text/javascript" src='/js/clasestarifas/validar.js'></script>
 		
 @endsection	
 
