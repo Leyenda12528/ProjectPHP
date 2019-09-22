@@ -324,3 +324,6 @@ label {
     font-family: var(--merri);
     
 }
+#login .card  .card-body{
+    padding: 1.25rem 0;
+}
