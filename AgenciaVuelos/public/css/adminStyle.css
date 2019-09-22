@@ -107,6 +107,7 @@ label {
 #body .navbar .nav-item .nav-link {
     color: white;
     text-align: left;
+    font-size: 16px;    
 }
 
 #body .navbar .nav-item:hover {

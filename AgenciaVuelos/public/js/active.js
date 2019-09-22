@@ -14,6 +14,9 @@ else if(url == 'http://127.0.0.1:8000/aviones'){
 else if(url == 'http://127.0.0.1:8000/viajes'){
 	menu[5].className += ' active'
 }
+else if(url == 'http://127.0.0.1:8000/clientes'){
+	menu[6].className += ' active'
+}
 else{
 	menu[1].className += ' active'
 }
