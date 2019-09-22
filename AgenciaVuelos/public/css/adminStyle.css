@@ -246,6 +246,14 @@ label {
     background-attachment: fixed;
     min-height: 400px;
 }
+#body .contenido .tablas.one-table {
+    padding: 50px 30px;
+    background-image: url(../img/parten.jpeg);
+    background-size: 25%;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-top: 0;
+}
 
 #body .contenido .tablas .nav-tabs {
     border: none;
