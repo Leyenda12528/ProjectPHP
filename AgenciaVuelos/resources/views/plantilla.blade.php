@@ -17,12 +17,17 @@
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/rutas"><span class="icon"><img src="img/route.svg" alt=""></span>Ciudades/Rutas</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/aviones"><span class="icon"><img src="img/airplane.svg" alt=""></span>Aviones</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/viajes"><span class="icon"><img src="img/passport.svg" alt=""></span>Programar vuelos</a>	</li>
-		<li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
-		 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-		 <span class="icon"><img src="img/exit.svg" alt=""></span>{{ __('Logout') }}</a>
-		 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>	</li>
+		@auth
+			<li class="nav-item">
+				<a class="nav-link" href="{{ route('logout') }}"
+				 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+					<span class="icon"><img src="img/exit.svg" alt=""></span>{{ __('Logout') }}
+				</a>
+				 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+				</form>	
+			</li>
+		@endauth
 	</nav>
 	<br>
 <div class="contenido">
