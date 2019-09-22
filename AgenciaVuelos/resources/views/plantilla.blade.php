@@ -10,9 +10,13 @@
 
 </head>
 <body id='body'>
+	<div id="loader">
+		<img src="img/eclipse.gif" alt="">
+	</div>
 	<nav id="menu" class="navbar navbar-expand-lg">
 		<li class="navbar-brand logo"><a href="">ABBIANKKA</a></li>
-		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/clasetarifa"><span class="icon"><img src="img/home.svg" alt=""></span>Inicio</a></li>
+		<p class="user"> {{ Auth::user()->name }} </p>
+		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/home"><span class="icon"><img src="img/home.svg" alt=""></span>Inicio</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/clasetarifa"><span class="icon"><img src="img/seat.svg" alt=""></span>Clases/Tarifas</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/rutas"><span class="icon"><img src="img/route.svg" alt=""></span>Ciudades/Rutas</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/aviones"><span class="icon"><img src="img/airplane.svg" alt=""></span>Aviones</a></li>
@@ -32,6 +36,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="js/loader.js" ></script>
 	{{-- <script src="js/js.js"></script> --}}
 	<script src="js/active.js"></script>
 

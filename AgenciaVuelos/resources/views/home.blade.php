@@ -1,23 +1,21 @@
-@extends('layouts.app')
+@extends('plantilla')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+@section('titulo','Ciudades&Rutas')
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@section('contenido')
+<div class="forms">
+    <div class="divisiones">
+    <div>
+        <h3>Usuarios</h3>
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+    </div>
+    <div>
+        <h3>Vuelos</h3>
+    </div>
+    <div>
+        <h3>Aviones</h3>
+    </div>
     </div>
 </div>
-@endsection
+@endsection	
+
