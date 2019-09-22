@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('UsersClients', 'UserViewController@index')->name('usersViews');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
