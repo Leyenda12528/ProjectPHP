@@ -11,7 +11,7 @@ use App\Ciudad;
 use App\Clasetarifa;
 use App\Clase;
 use App\Tarifa;
-
+use App\Clasemodelo;
 
 class ViajeController extends Controller
 {
