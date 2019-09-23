@@ -19,20 +19,14 @@ class User extends Authenticatable
     /*= [
         'options' => 'array',
     ];*/
-    /*public function getRolUserAttribute($rol){
-        return $this->attributes['rol_user'];
-    }
-    public function setRolUserAttribute($rol){
-        $this->attributes['rol_user']=$rol;
-    }*/
-
+    
     public function permiso($rol, $id, $mjs='No autorizado'){
         $rol_id_rol = Role::select('id')->where('rol',$rol)->first();
         $rol_id_roluser = RoleUser::select('role_id')->where('user_id',$id)->first();                
         if($rol_id_rol->id != $rol_id_roluser->role_id){
             return abort(403, $mjs);
         }
-            return true;        
+            return true;
     }
 
     public static function isAdmin($id){

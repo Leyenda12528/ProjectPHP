@@ -11,14 +11,15 @@ class CiudadController extends Controller
 {
 
     public function __construct()
-    {
+    {/*
         $this->middleware(function( $request, $next){
-            /*if(!User::isAdmin($request->user()->id)){
+            if(!User::isAdmin($request->user()->id)){
                 abort(403,'no admin');
-            }*/
-            $request->user()->permiso('Administrador',$request->user()->id,'No Auth');
+            }
+            //$request->user()->permiso('Administrador',$request->user()->id,'No Auth');
             return $next($request);
         });
+        */
     }
 
     /**
@@ -31,20 +32,7 @@ class CiudadController extends Controller
         //$request->user()->permiso1('Administrador');
         $request->user()->permiso('Administrador',$request->user()->id,'No Auth');
         //return 'bien hecho';
-        
-        //$datos = $request->user();
-        //$datos = collect($datos);
-        //$datos->put('role','admin');
-        //$datos->all();
-        
-        //$roluser = $request->user()->roluser;
-        //$roluser['role'] = 'admin';
-        //$roluser = ['role' => 'admin'];
-        //$roluser = 'admin';
-        //$request->user()->add(['rol' => $roluser]);
-//        $request->user()->roluser = 'admin';
-        //$request->user()->roluser = $roluser;
-        
+               
         
         /*$datos1 = $request->user();
         $datos1 = array($datos1);
@@ -63,7 +51,7 @@ class CiudadController extends Controller
             //$item->put('role','admin');
             break;
         }*/
-        return $request->user();
+        //return $request->user();
 
         if($request->ajax()){
             $ciudades = Ciudad::orderBy('nombre','asc')->get();
