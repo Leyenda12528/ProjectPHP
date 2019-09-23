@@ -13,18 +13,18 @@ class UserViewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         $id = 3; //Cliente
-        //$roles = RoleUser::where('role_id',$id)->get();
-        
+
+        //$roles = RoleUser::where('role_id',$id)->get();        
         //$roles = RoleUser::select('user_id')->where('role_id',$id)->get();
         //$roles = $roles->toArray();
 
         $users = User::find(RoleUser::select('user_id')->where('role_id',$id)->get());
-
         //return $users;
-        //return $roles;
+        
         return view('usuarios1', compact('users'));
     }
 

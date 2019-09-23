@@ -15,19 +15,45 @@ class User extends Authenticatable
     public function tickets(){
         $this->hasMany('App\Ticketusuario');
     }
-    //public function
-    /*= [
-        'options' => 'array',
-    ];*/
-    
-    public function permiso($rol, $id, $mjs='No autorizado'){
-        $rol_id_rol = Role::select('id')->where('rol',$rol)->first();
-        $rol_id_roluser = RoleUser::select('role_id')->where('user_id',$id)->first();                
+        
+    public function permiso($rola, $id, $mjs='No autorizado'){
+        $rol_id_rol = Role::select('id')->where('rol',$rola)->first();
+        $rol_id_roluser = RoleUser::select('role_id')->where('user_id',$id)->first();
         if($rol_id_rol->id != $rol_id_roluser->role_id){
             return abort(403, $mjs);
         }
             return true;
     }
+    public function Autorizado($roles, $id, $mjs='No autorizado'){
+        if($this->hasAnyRole($roles, $id)){
+            return true;
+        }
+        abort(403, $mjs);
+    }
+
+    public function hasAnyRole($roles, $id){
+        if(is_array($roles)){
+            foreach($roles as $role){
+                if($this->hasRole($role, $id)){
+                    return true;
+                }
+            }
+        } else {
+            if($this->hasRole($roles, $id)){
+                return true;
+            }
+        }
+    }
+    public function hasRole($role, $id){
+        $rol_id_rol = Role::select('id')->where('rol',$role)->first();
+        $rol_id_roluser = RoleUser::select('role_id')->where('user_id',$id)->first();
+        if($rol_id_rol->id == $rol_id_roluser->role_id){
+            return true;
+        }
+        return false;
+    }
+
+
 
     public static function isAdmin($id){
         /*if($id != 1){
@@ -50,7 +76,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'tarjeta',
     ];
 
     /**

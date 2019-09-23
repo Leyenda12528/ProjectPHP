@@ -11,25 +11,28 @@
 |
 */
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//          RUTAS SA
+Router::get('register', 'Auth\RegisterSAController@showRegistrationForm')->name('register');
+Router::post('register', 'Auth\RegisterSAController@register');
 
-// RUTAS SA
 
 
-Route::get('clientes', 'UserViewController@index')->name('usersViews');
-
-
-// RUTAS CLIENTE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//          RUTAS CLIENTE
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+//LOGIN y REGISTER
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*
-RUTAS ADMIN
-*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//          RUTAS ADMIN
+//mostrar clientes
+Route::get('clientes', 'UserViewController@index')->name('usersViews');
+
 Route::resource('tarifas', 'TarifaController');
 Route::post('tarifas/{tarifa}', 'TarifaController@update1');
 
@@ -43,7 +46,7 @@ Route::post('clasetarifa/{clasetarifa}','ClaseTarifaController@update1');
 Route::resource('modelos','ModeloController');
 Route::post('modelos/{modelo}','ModeloController@update1');
 
-Route::resource('aviones','AvionController');
+Route::resource('aviones','AvionController')->middleware('auth');
 Route::get('aviones/create','AvionController@getAviones');
 Route::post('aviones/{avion}','AvionController@update1');
 

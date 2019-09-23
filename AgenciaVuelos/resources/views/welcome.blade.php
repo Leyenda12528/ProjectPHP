@@ -42,27 +42,45 @@
                 </button>
             </div>
             <nav class="main-menu flex">
+                @auth
+                    <li><a href="#">Bienvenido/a {{ Auth::user()->name }}</a></li>
+                @endauth
                 <li><a href="index.html">Book</a></li>
                 <li><a href="promos.html">Promociones</a></li>
                 <li><a href="vuelos.html">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="ourteam.html">Our team</a></li>
-                <li><a href="{{ route('login') }}">
-                    <span>
-                    <svg class="menu-logo" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<g>
-	<g>
-		<path d="M437.02,330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521,243.251,404,198.548,404,148
-			C404,66.393,337.607,0,256,0S108,66.393,108,148c0,50.548,25.479,95.251,64.262,121.962
-			c-36.21,12.495-69.398,33.136-97.281,61.018C26.629,379.333,0,443.62,0,512h40c0-119.103,96.897-216,216-216s216,96.897,216,216
-			h40C512,443.62,485.371,379.333,437.02,330.98z M256,256c-59.551,0-108-48.448-108-108S196.449,40,256,40
-			c59.551,0,108,48.448,108,108S315.551,256,256,256z"/>
-	</g>
-</g>
-</svg>
-                </span>
-            </a></li>
+                @auth
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                        </form>
+                    </li>
+                @else                
+                    <li>
+                        <a href="{{ route('login') }}"><span>
+                                <svg class="menu-logo" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M437.02,330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521,243.251,404,198.548,404,148
+                                                C404,66.393,337.607,0,256,0S108,66.393,108,148c0,50.548,25.479,95.251,64.262,121.962
+                                                c-36.21,12.495-69.398,33.136-97.281,61.018C26.629,379.333,0,443.62,0,512h40c0-119.103,96.897-216,216-216s216,96.897,216,216
+                                                h40C512,443.62,485.371,379.333,437.02,330.98z M256,256c-59.551,0-108-48.448-108-108S196.449,40,256,40
+                                                c59.551,0,108,48.448,108,108S315.551,256,256,256z"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                        </span></a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    @endif
+                @endauth
             </nav>
         </div>
     </header>

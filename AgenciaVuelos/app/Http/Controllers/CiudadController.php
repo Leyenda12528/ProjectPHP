@@ -30,7 +30,7 @@ class CiudadController extends Controller
     public function index(Request $request)
     {
         //$request->user()->permiso1('Administrador');
-        $request->user()->permiso('Administrador',$request->user()->id,'No Auth');
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         //return 'bien hecho';
                
         
