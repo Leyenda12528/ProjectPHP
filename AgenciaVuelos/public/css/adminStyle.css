@@ -15,6 +15,24 @@
     list-style: none;
 }
 
+#loader{
+    /* background: var(--main); */
+    background: white;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#loader img{
+    width: 200px;
+}
 .btn {
     border-radius: 15px;
     font-family: var(--barlow);
@@ -100,6 +118,14 @@ label {
 
 }
 
+
+#body .navbar p.user{
+    text-transform: capitalize;
+    border-bottom: 1px solid var(--main);
+    color: var(--main);
+    font-weight: 700;
+}
+
 #body .navbar .nav-item {
     width: 100%;
 }
@@ -107,6 +133,7 @@ label {
 #body .navbar .nav-item .nav-link {
     color: white;
     text-align: left;
+    font-size: 16px;    
 }
 
 #body .navbar .nav-item:hover {
@@ -246,6 +273,14 @@ label {
     background-attachment: fixed;
     min-height: 400px;
 }
+#body .contenido .tablas.one-table {
+    padding: 50px 30px;
+    background-image: url(../img/parten.jpeg);
+    background-size: 25%;
+    background-attachment: fixed;
+    height: 100vh;
+    margin-top: 0;
+}
 
 #body .contenido .tablas .nav-tabs {
     border: none;
@@ -314,4 +349,7 @@ label {
     font-size: 14px;
     font-family: var(--merri);
     
+}
+#login .card  .card-body{
+    padding: 1.25rem 0;
 }

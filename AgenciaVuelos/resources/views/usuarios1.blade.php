@@ -5,7 +5,7 @@
 @section('contenido')
 
 
-<div class="tablas">
+<div class="tablas one-table">
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Usuarios</a>
@@ -21,7 +21,7 @@
 					<th>Eliminar</th>
 				</tr>
 			</thead>
-			<tbody id='tablaClases'>
+			<tbody id='tablaUsuario'>
                 @foreach ($users as $users)
                     <tr>
                         <td>{{$users->name}}</td>
