@@ -25,6 +25,6 @@ class HomeController extends Controller
     {
         //abort(403, 'Unauthorized action.');
         //abort(403,'No autorizado!!!');
-        //return view('home');
+        return view('home');
     }
 }

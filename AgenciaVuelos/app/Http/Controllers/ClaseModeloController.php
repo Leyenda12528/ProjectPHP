@@ -17,7 +17,7 @@ class ClaseModeloController extends Controller
      */
     public function index()
     {
-
+        
     }
     public function relaciones(Request $request){
      if($request->ajax()){

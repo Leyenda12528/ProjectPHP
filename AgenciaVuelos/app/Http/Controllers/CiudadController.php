@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Ciudad;
 use App\Http\Requests\CiudadRequest;
+use App\User;
 
 class CiudadController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(function( $request, $next){
+            /*if(!User::isAdmin($request->user()->id)){
+                abort(403,'no admin');
+            }*/
+            $request->user()->permiso('Administrador',$request->user()->id,'No Auth');
+            return $next($request);
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +28,43 @@ class CiudadController extends Controller
      */
     public function index(Request $request)
     {
+        //$request->user()->permiso1('Administrador');
+        $request->user()->permiso('Administrador',$request->user()->id,'No Auth');
+        //return 'bien hecho';
+        
+        //$datos = $request->user();
+        //$datos = collect($datos);
+        //$datos->put('role','admin');
+        //$datos->all();
+        
+        //$roluser = $request->user()->roluser;
+        //$roluser['role'] = 'admin';
+        //$roluser = ['role' => 'admin'];
+        //$roluser = 'admin';
+        //$request->user()->add(['rol' => $roluser]);
+//        $request->user()->roluser = 'admin';
+        //$request->user()->roluser = $roluser;
+        
+        
+        /*$datos1 = $request->user();
+        $datos1 = array($datos1);
+        $row1 = array(
+            'role'=> 'admin'
+        );
+        $datos = array_merge($datos1,$row1);*/
+
+
+        //$datos = array($datos1,$row1);
+//        array_push();
+
+        //$datos = array_add($datos1,'role','admin');
+        //$datos = array($datos1);
+        /*foreach($datos1 as $item){
+            //$item->put('role','admin');
+            break;
+        }*/
+        return $request->user();
+
         if($request->ajax()){
             $ciudades = Ciudad::orderBy('nombre','asc')->get();
             return response()->json($ciudades,200);

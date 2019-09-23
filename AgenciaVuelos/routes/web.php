@@ -11,9 +11,14 @@
 |
 */
 
+
+// RUTAS SA
+
+
 Route::get('UsersClients', 'UserViewController@index')->name('usersViews');
 
 
+// RUTAS CLIENTE
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,7 +28,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*
-RUTAS DEL PROGRAMA
+RUTAS ADMIN
 */
 Route::resource('tarifas', 'TarifaController');
 Route::post('tarifas/{tarifa}', 'TarifaController@update1');
@@ -46,7 +51,7 @@ Route::resource('clasemodelos','ClaseModeloController');
 Route::post('clasemodelos/relaciones','ClaseModeloController@relaciones');
 Route::post('clasemodelos/{clasemodelo}','ClaseModeloController@update1');
 
-Route::resource('ciudades','CiudadController');
+Route::resource('ciudades','CiudadController')->middleware('auth');
 Route::post('ciudades/{ciudad}','CiudadController@update1');
 
 Route::resource('rutas','RutaController');
