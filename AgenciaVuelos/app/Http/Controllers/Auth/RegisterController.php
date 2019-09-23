@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'name' => ['required', 'string', 'max:25'],
+            'tarjeta' => ['required', 'string', 'max:25'],
         ]);
     }
 
@@ -74,8 +74,8 @@ class RegisterController extends Controller
         $id_user = User::select('id')->where('email',$data['email'])->first();
         $modelo = new RoleUser();
         $modelo->user_id = $id_user->id;
-        $modelo->role_id = 2;
+        $modelo->role_id = 2; //2-cliente
         $modelo->save();
-        return User::find($id_user->id);        
+        return User::find($id_user->id);
     }
 }

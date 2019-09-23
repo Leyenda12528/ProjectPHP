@@ -11,22 +11,26 @@
 |
 */
 
+////         Vista General
+Route::get('/', function () {
+    return view('welcome');
+});
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS SA
-Router::get('register', 'Auth\RegisterSAController@showRegistrationForm')->name('register');
-Router::post('register', 'Auth\RegisterSAController@register');
+Route::get('register', 'Auth\RegisterSAController@showRegistrationForm')->name('register')->middleware('auth');
+Route::post('register', 'Auth\RegisterSAController@register')->middleware('auth');
 
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS CLIENTE
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 //LOGIN y REGISTER
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS ADMIN
