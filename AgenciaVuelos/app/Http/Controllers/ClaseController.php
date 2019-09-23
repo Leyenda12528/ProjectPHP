@@ -14,6 +14,7 @@ class ClaseController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $clases = Clase::orderBy('nombre','asc')->get();
             return response()->json($clases,200);
@@ -38,6 +39,7 @@ class ClaseController extends Controller
      */
     public function store(GuardarClaseRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $clase = Clase::where('nombre',$request->clase)->first();
             if($clase){
@@ -90,6 +92,7 @@ class ClaseController extends Controller
     }
     public function update1(GuardarClaseRequest $request, Clase $clase)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $test = Clase::where('nombre',$request->clase)->first();
             if($test && $test->nombre != $clase->nombre)
@@ -109,6 +112,7 @@ class ClaseController extends Controller
      */
     public function destroy(Request $request,Clase $clase)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $clase->delete();
             return response()->json(['eliminado'],200);

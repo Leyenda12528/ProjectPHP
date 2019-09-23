@@ -23,6 +23,7 @@ class PreciorutaController extends Controller
         //
     }
     public function precios(Request $request){
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $data = Precioruta::join('rutas','rutas.id','preciorutas.ruta_id')
             ->join('clasetarifas','clasetarifas.id','preciorutas.clasetarifa_id')
@@ -55,6 +56,7 @@ class PreciorutaController extends Controller
      */
     public function store(PreciorutaRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ruta = Ruta::where('id',$request->ruta)->first();
             $clasetarifa = Clasetarifa::where('id',$request->clasetarifa)->first();
@@ -105,6 +107,7 @@ class PreciorutaController extends Controller
      */
     public function update1(PreciorutaRequest $request, Precioruta $precioruta)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ruta = Ruta::where('id',$request->ruta)->first();
             $clasetarifa = Clasetarifa::where('id',$request->clasetarifa)->first();
@@ -131,6 +134,7 @@ class PreciorutaController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
            $pr = Precioruta::where('id',$id)->first();
            $pr->delete();

@@ -15,15 +15,20 @@ class User extends Authenticatable
     public function tickets(){
         $this->hasMany('App\Ticketusuario');
     }
-        
-    public function permiso($rola, $id, $mjs='No autorizado'){
+      
+    public function Role($id){        
+        $role_id = RoleUser::select('role_id')->where('user_id',$id)->first();        
+        $name_rol = Role::find($role_id)->first();//select('rol')->where('id',$role_id)->get();
+        return $name_rol->rol;
+    }
+    /*public function permiso($rola, $id, $mjs='No autorizado'){
         $rol_id_rol = Role::select('id')->where('rol',$rola)->first();
         $rol_id_roluser = RoleUser::select('role_id')->where('user_id',$id)->first();
         if($rol_id_rol->id != $rol_id_roluser->role_id){
             return abort(403, $mjs);
         }
             return true;
-    }
+    }*/
     public function Autorizado($roles, $id, $mjs='No autorizado'){
         if($this->hasAnyRole($roles, $id)){
             return true;

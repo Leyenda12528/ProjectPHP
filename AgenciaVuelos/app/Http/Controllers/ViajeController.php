@@ -22,11 +22,12 @@ class ViajeController extends Controller
      */
     public function index(Request $request)
     {
-
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
        return view('programarViajes');
     }
 
     public function getViajes(Request $request){
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $data = Viaje::join('rutas','rutas.id','viajes.ruta_id')
             ->join('ciudads as co','co.id','rutas.ciudad_origen')
@@ -41,6 +42,7 @@ class ViajeController extends Controller
     }
 
     public function getAviones(Request $request){
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $aviones_disponibles =[];
             $clasemodelo;
@@ -109,6 +111,7 @@ class ViajeController extends Controller
      */
     public function store(ViajeRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $viaje = Viaje::where([['fecha',$request->fecha],['avion_id',$request->avion]])->first();
             if($viaje)
@@ -157,6 +160,7 @@ class ViajeController extends Controller
      */
     public function update1(ViajeRequest $request,Viaje $viaje)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $test = Viaje::where([['fecha',$request->fecha],['avion_id',$request->avion]])->first();
             if($test && $test->id != $viaje->id)
@@ -180,6 +184,7 @@ class ViajeController extends Controller
      */
     public function destroy(Request $request,$id)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $viaje = Viaje::where('id',$id)->first();
             $viaje->delete();

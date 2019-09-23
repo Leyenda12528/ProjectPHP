@@ -15,6 +15,7 @@ class ModeloController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $modelos = Modelo::orderBy('nombre','asc')->get();
             return response()->json($modelos,200);
@@ -39,6 +40,7 @@ class ModeloController extends Controller
      */
     public function store(GuardarModeloRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $modelo = Modelo::where('nombre',$request->modelo)->first();
             if($modelo){
@@ -91,6 +93,7 @@ class ModeloController extends Controller
     }
     public function update1(GuardarModeloRequest $request, Modelo $modelo)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $test = Modelo::where('nombre',$request->modelo)->first();
             if($test && $test->nombre != $modelo->nombre)
@@ -112,6 +115,7 @@ class ModeloController extends Controller
      */
     public function destroy(Request $request,Modelo $modelo)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $modelo->delete();
             return response()->json(['eliminado'],200);

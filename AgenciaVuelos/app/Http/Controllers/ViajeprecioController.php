@@ -23,6 +23,7 @@ class ViajeprecioController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $data = Viajeprecio::join('clasetarifas','clasetarifas.id','viajeprecios.clasetarifa_id')
             ->join('clases','clases.id','clasetarifas.clase_id')
@@ -36,6 +37,7 @@ class ViajeprecioController extends Controller
     }
     public function getTarifas(Request $request)
     {
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ruta = Ruta::where('id',$request->ruta)->first();
             $avion = Avion::where('id',$request->avion)->first();
@@ -109,6 +111,7 @@ class ViajeprecioController extends Controller
      */
     public function store(ViajeprecioRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $vp = Viajeprecio::where([['viaje_id',$request->vuelo],['clasetarifa_id',$request->clasetarifa]])->first();
             if($vp)
@@ -165,6 +168,7 @@ class ViajeprecioController extends Controller
      */
     public function destroy(Request $request,$id)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $vp = Viajeprecio::where('id',$id)->first();
             $vp->delete();

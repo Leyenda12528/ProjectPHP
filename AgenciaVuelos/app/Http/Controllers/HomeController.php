@@ -25,12 +25,12 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         //$request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
-        $id_rol = RoleUser::select('role_id')->where('user_id',$request->user()->id)->first();        
+        $id_rol = RoleUser::select('role_id')->where('user_id',$request->user()->id)->first();
         if($id_rol->role_id == 2){   //Si es admin podra ir al home 
             return view('home');     //Mantenimiento del sistema 
         }
-        else if($id_rol->id == 1){
-            return view('Admins');   //Ingresar Administradores
+        else if($id_rol->role_id == 1){
+            return redirect()->route('registerA');   //Ingresar Administradores
         }
         return view('welcome');
     }

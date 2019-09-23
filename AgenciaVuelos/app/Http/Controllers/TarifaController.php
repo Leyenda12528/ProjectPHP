@@ -14,6 +14,7 @@ class TarifaController extends Controller
      */
     public function index(Request $request)
     {
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
          if($request->ajax()){
              $tarifas = Tarifa::all(); 
             return response()->json($tarifas,200);
@@ -38,7 +39,7 @@ class TarifaController extends Controller
      */
     public function store(GuardarTarifaRequest $request)
     {        
-
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $tarifa = Tarifa::where('nombre',$request->tarifa)->first();
             if($tarifa){
@@ -90,7 +91,7 @@ class TarifaController extends Controller
 
     public function update1(GuardarTarifaRequest $request, Tarifa $tarifa)
     {
-        
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $test = Tarifa::where('nombre',$request->tarifa)->first();
             if($test && $test->nombre != $tarifa->nombre)
@@ -113,6 +114,7 @@ class TarifaController extends Controller
      */
     public function destroy(Request $request, Tarifa $tarifa)
     {
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $tarifa->delete();
             return response()->json(['eliminado'],200);

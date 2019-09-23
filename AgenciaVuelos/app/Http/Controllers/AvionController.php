@@ -21,7 +21,7 @@ class AvionController extends Controller
     }
 
     public function getAviones(Request $request){
-
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $data = Avion::join('modelos','modelos.id','avions.modelo_id')
             ->select('avions.nombre as nombre','modelos.id as modelo_id','modelos.nombre as modelo')
@@ -50,6 +50,7 @@ class AvionController extends Controller
      */
     public function store(AvionsRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $avion = Avion::where([['nombre',$request->avion],['modelo_id',$request->modelo]])->first();
             $modelo = Modelo::where('id',$request->modelo)->first();
@@ -99,6 +100,7 @@ class AvionController extends Controller
      }
     public function update1(AvionsRequest $request, Avion $avion)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $test = Avion::where([['nombre',$request->avion],['modelo_id',$request->modelo]])->first();
             if($test && $test->id != $avion->id)
@@ -120,6 +122,7 @@ class AvionController extends Controller
      */
      public function destroy(Request $request,$nombre)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $avion = Avion::where('nombre',$nombre)->first();
             $avion->delete();

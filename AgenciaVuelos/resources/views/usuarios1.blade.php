@@ -17,6 +17,8 @@
 			<thead>
 				<tr>
 					<th>Nombre</th>
+					<th>Email</th>
+					<th>Tarjeta</th>
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</tr>
@@ -26,7 +28,9 @@
                     <tr>
                         <td>{{$users->name}}</td>
                         <td>{{$users->email}}</td>
-                        <td>{{$users->tarjeta}}</td>
+						<td>{{$users->tarjeta}}</td>
+						<td></td>
+						<td></td>
                     </tr>
                 @endforeach
 		    </tbody>

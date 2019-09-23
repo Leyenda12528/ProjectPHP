@@ -20,6 +20,7 @@ class ClaseModeloController extends Controller
         
     }
     public function relaciones(Request $request){
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
      if($request->ajax()){
             $cm = Clasemodelo::join('clases','clases.id','clasemodelos.clase_id')
             ->join('modelos','modelos.id','clasemodelos.modelo_id')
@@ -49,6 +50,7 @@ class ClaseModeloController extends Controller
      */
     public function store(CMRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $clase = Clase::where('nombre',$request->clase)->first();
             $modelo = Modelo::where('nombre',$request->modelo)->first();
@@ -97,6 +99,7 @@ class ClaseModeloController extends Controller
      */
     public function update1(CMRequest $request, Clasemodelo $clasemodelo)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $clase = Clase::where('nombre',$request->clase)->first();
             $modelo = Modelo::where('nombre',$request->modelo)->first();
@@ -124,6 +127,7 @@ class ClaseModeloController extends Controller
      */
     public function destroy(Request $request, Clasemodelo $clasemodelo)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $clasemodelo->delete();
             return response()->json(['eliminado'],200);

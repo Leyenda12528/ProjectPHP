@@ -18,9 +18,9 @@ Route::get('/', function () {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS SA
-Route::get('register', 'Auth\RegisterSAController@showRegistrationForm')->name('register')->middleware('auth');
-Route::post('register', 'Auth\RegisterSAController@register')->middleware('auth');
-
+Route::get('registerA', 'RegistroSAController@index')->name('registerA')->middleware('auth');
+Route::post('registerA', 'RegistroSAController@create')->name('registerA.create')->middleware('auth');
+//Route::get('ciuda','RutaController@index')->name('tutas');
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

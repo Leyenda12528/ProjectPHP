@@ -74,7 +74,7 @@ class RegisterController extends Controller
         $id_user = User::select('id')->where('email',$data['email'])->first();
         $modelo = new RoleUser();
         $modelo->user_id = $id_user->id;
-        $modelo->role_id = 2; //2-cliente
+        $modelo->role_id = 3; //3-cliente
         $modelo->save();
         return User::find($id_user->id);
     }

@@ -16,11 +16,12 @@ class RutaController extends Controller
      */
     public function index(Request $request)
     {
-
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         return view('rutas');
     }
 
     public function getRutas(Request $request){
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $data = Ruta::join('ciudads as co','co.id','rutas.ciudad_origen')
             ->join('ciudads as cd','cd.id','rutas.ciudad_destino')
@@ -51,6 +52,7 @@ class RutaController extends Controller
      */
     public function store(RutaRequest $request)
     {
+        $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ciudad_origen = Ciudad::where('nombre',$request->ciudad_origen)->first();
             $ciudad_destino = Ciudad::where('nombre',$request->ciudad_destino)->first();
@@ -100,6 +102,7 @@ class RutaController extends Controller
      */
     public function update1(RutaRequest $request, Ruta $ruta)
     {
+        $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ciudad_origen = Ciudad::where('nombre',$request->ciudad_origen)->first();
             $ciudad_destino = Ciudad::where('nombre',$request->ciudad_destino)->first();
@@ -127,6 +130,7 @@ class RutaController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ruta = Ruta::where('id',$id)->first();
             $ruta->delete();

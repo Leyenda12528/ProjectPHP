@@ -77,6 +77,7 @@ class CiudadController extends Controller
      */
     public function store(CiudadRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ciudad = Ciudad::where('nombre',$request->ciudad)->first();
             if($ciudad){
@@ -122,6 +123,7 @@ class CiudadController extends Controller
      */
     public function update1(CiudadRequest $request, Ciudad $ciudad)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $test = Ciudad::where('nombre',$request->ciudad)->first();
             if($test && $test->nombre != $ciudad->nombre)
@@ -142,6 +144,7 @@ class CiudadController extends Controller
      */
     public function destroy(Request $request, $nombre)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $ciudad = Ciudad::where('nombre',$nombre)->first();
             $ciudad->delete();

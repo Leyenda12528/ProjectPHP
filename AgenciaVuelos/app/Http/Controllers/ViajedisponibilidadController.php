@@ -13,6 +13,7 @@ use App\Viajedisponibilidad;
 class ViajedisponibilidadController extends Controller
 {
     public function getDisponibilidad(Request $request){
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $data = Viajedisponibilidad::join('clases','clases.id','viajedisponibilidads.clase_id')
             ->select('clases.nombre as clase','viajedisponibilidads.disponibilidad as disponibilidad')
@@ -23,6 +24,7 @@ class ViajedisponibilidadController extends Controller
         }
     }
     public function setDisponibilidad(Request $request){
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $viaje = Viaje::where([['fecha',$request->fecha],['hora',$request->hora],['ruta_id',$request->ruta],['avion_id',$request->avion]])->first();
             $viaje = $viaje->id;

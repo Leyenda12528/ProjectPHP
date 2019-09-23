@@ -17,10 +17,11 @@ class ClaseTarifaController extends Controller
      */
     public function index(Request $request)
     {
-
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         return view('tarifasclases');
     }
     public function getClasetarifas(Request $request){
+        $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $data = Clasetarifa::join('clases','clases.id','clasetarifas.clase_id')
             ->join('tarifas','tarifas.id','clasetarifas.tarifa_id')
@@ -50,6 +51,7 @@ class ClaseTarifaController extends Controller
      */
     public function store(CTRequest $request)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $c = Clase::where('nombre',$request->clase)->first();
             $t = Tarifa::where('nombre',$request->tarifa)->first();
@@ -99,6 +101,7 @@ class ClaseTarifaController extends Controller
 
     public function update1(Request $request, Clasetarifa $clasetarifa)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $c = Clase::where('nombre',$request->clase)->first();
             $t = Tarifa::where('nombre',$request->tarifa)->first();
@@ -122,6 +125,7 @@ class ClaseTarifaController extends Controller
      */
     public function destroy(Request $request, Clasetarifa $clasetarifa)
     {
+        $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         if($request->ajax()){
             $clasetarifa->delete();
             return response()->json(['eliminado'],200);
