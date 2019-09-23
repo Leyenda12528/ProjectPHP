@@ -1,6 +1,6 @@
 	let tablaClaseTarifa = document.querySelector('#tablaClaseTarifa')
 
-	window.onload= cargarct
+	window.onload= cargarct()
 
 	function cargarct(){
 			fetch('http://127.0.0.1:8000/clasetarifa/create',{
