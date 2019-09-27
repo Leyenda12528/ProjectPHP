@@ -216,11 +216,7 @@ main .info-form  form>div input, main .info-form  form>div select{
     background: #ffffff;
     outline: none;
     padding: 15px 25px;
-    border-radius: 30px;;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    -o-border-radius: 30px;
+    border-radius: 30px;
 }
 
 main .info-form .vuelta{

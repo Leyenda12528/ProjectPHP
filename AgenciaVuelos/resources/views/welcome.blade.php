@@ -34,7 +34,7 @@
             <div class="content flex">
                 <a href="index.html">
                     <div class="logo">
-                        <img src="img/ogo1.png" alt="" />
+                        <img src="img/logos.png" alt="" />
                     </div>
                 </a>
                 <button class="toggle">
@@ -386,7 +386,7 @@
     <!-- <section class="carousel">    </section> -->
     <footer>
         <div class="container flex">
-            <div class="logo"><img src="img/ogo1.png" alt=""></div>
+            <div class="logo"><img src="img/logos.png" alt=""></div>
             <div class="menu-foot flex">
                 <li><a href="#">Terminos y Condiciones</a></li>
                 <li><a href="#">Politicas de privacidad</a></li>

@@ -316,8 +316,9 @@ label {
 
 #login {
     background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url(../img/collage.jpg);
+    /* background-size: cover;
+    background-repeat: no-repeat; */
     width: 100%;
     font-family: var(--merri);
     height: 100vh;
@@ -338,9 +339,10 @@ label {
 }
 #login .card {
     width: 400px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.5);
     padding: 50px 25px;
     border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 #login .card .btn-link {
     color: var(--secundary);
@@ -352,4 +354,17 @@ label {
 }
 #login .card  .card-body{
     padding: 1.25rem 0;
+}
+#login .card .form-control{
+    border: 1px solid #efeeea;
+    width: 100%;
+    display: block;
+    background: #ffffff;
+    outline: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    height:unset;
+}
+#login .card .form-control:focus, #login .card .form-control:active{
+    outline: none;
 }
