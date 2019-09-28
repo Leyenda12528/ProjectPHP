@@ -7,7 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:400,700,900|Merriweather:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link href="{{ asset('css/adminStyle.css') }}" rel="stylesheet">
-
+	<link rel="shortcut icon" href="{{ asset('img/icon/icono.ico') }}" />
 </head>
 <body id='body'>
 	<div id="loader">

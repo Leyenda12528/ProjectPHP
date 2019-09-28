@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slick-theme.css">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="{{ asset('img/icon/icono.ico') }}" />
     </head>
     <body class="index">
         <!-- <div class="flex-center position-ref full-height">
