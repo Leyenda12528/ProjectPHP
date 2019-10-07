@@ -364,7 +364,27 @@ label {
     padding: 15px 25px;
     border-radius: 30px;
     height:unset;
+    background-size: 10%;
+    background-repeat: no-repeat;
+    color: var(--secundary);
+    background-position: 5% 50%;
+    padding-left: 65px;
 }
 #login .card .form-control:focus, #login .card .form-control:active{
     outline: none;
+}
+#login .card .form-control::placeholder{
+    color: var(--grey);
+}
+#login .card #name{
+    background-image: url(../img/name.svg);
+}
+#login .card #email{
+    background-image: url(../img/email.svg);
+}
+#login .card #password,#login .card #password-confirm{
+    background-image: url(../img/padlock.svg);
+}
+#login .card #tarjeta{
+    background-image:url(../img/debitkarte.svg);
 }

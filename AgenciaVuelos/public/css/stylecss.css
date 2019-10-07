@@ -94,7 +94,13 @@ header .bar .main-menu li a{
 header .bar .main-menu li a:hover{
     color: #0A46BF;
 }
-
+header .bar .main-menu .dropdown{
+    background: pink;
+}
+header .bar .main-menu .dropdown .btn-gold{ 
+    padding: 10px 30px;
+    color: pink;
+}
 /* SLIDER SECTION */
 .slider{
     background-image: url('../img/aviongris.png');
