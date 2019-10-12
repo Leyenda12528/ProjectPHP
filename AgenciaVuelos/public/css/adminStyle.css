@@ -191,6 +191,31 @@ label {
     font-weight: 600;
 }
 
+#body .contenido .forms .divisiones>div .widgets{
+    max-width: 75%;
+    background: #ffffff;
+    border-radius: 15px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+}
+#body .contenido .forms .divisiones>div .widgets h3{
+    background: var(--secundary);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 15px 0;
+    margin: 0;
+}
+
+#body .contenido .forms .divisiones>div .widgets .number{
+font-size: 50px;
+font-weight: 700;
+color: var(--main);
+padding: 10px 0;
+text-align: center;
+}
+
+
 #body .contenido .divisiones>div {
     padding: 0 10px;
 }

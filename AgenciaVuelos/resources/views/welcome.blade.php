@@ -50,39 +50,7 @@
                 <li><a href="vuelos.html">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="ourteam.html">Our team</a></li>
-                @auth
-                    <li>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                            @csrf
-                        </form>
-                    </li>
-                @else     
-                <li>
-                <a class="" href="{{ route('login') }}">Login</a>
-                </li>
-    @if (Route::has('register'))
-    <li>
-    <a class="" href="{{ route('register') }}">Registrarse</a></li>
-                    @endif           
-<!-- 
-                <li class="dropdown">
-  <button class="btn btn-gold dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Usuario
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="{{ route('login') }}">Login</a>
-    @if (Route::has('register'))
-    <a class="dropdown-item" href="{{ route('register') }}">Registrarse</a>
-                    @endif
-    
-  </div>
-</li> -->
-                   
-                @endauth
+
                 <div class="dropdown">
   <button class="btn btn-gold dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   @auth
@@ -95,15 +63,16 @@
   @auth
   <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <span><img src="img/exit.svg" alt=""></span>
                             Logout
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                             @csrf
                         </form>
                         @else
-  <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+  <a class="dropdown-item" href="{{ route('login') }}"><span><img src="img/account.svg" alt=""></span>Login</a>
   @if (Route::has('register'))
-  <a class="dropdown-item" href="{{ route('register') }}">Registrarse</a>
+  <a class="dropdown-item" href="{{ route('register') }}"><span><img src="img/sign-up.svg" alt=""></span>Registrarse</a>
   @endif
   @endauth
   </div>
