@@ -338,6 +338,49 @@ text-align: center;
     border-radius: 0 15px 15px 15px;
     padding: 50px;
 }
+#body .contenido .tablas.flex{
+    display: flex;
+}
+#body .contenido .tablas.flex .extras{
+    flex:0 0 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#body .contenido .tablas.flex .extras .cal{
+    color: white;
+    max-width: 100px;
+}
+#body .contenido .tablas.flex .cal>p{
+    margin: 0;
+    font-weight: 700;
+    font-family: var(--barlow);
+    text-align: center;
+}
+#body .contenido .tablas.flex .cal .dia,#body .contenido .tablas.flex .cal .mes {
+    font-size: 60px;
+    text-transform: uppercase;
+}
+#body .contenido .tablas.flex .cal .fecha{
+    font-size: 80px;
+    line-height: 20px;
+}
+#body .contenido .tablas.flex .extras .clock{
+font-size: 40px;
+color: white;
+font-family: var(--barlow);
+margin-left: 15px;
+font-weight: 700;
+
+}
+#body .contenido .tablas.flex .video{
+    height: 250px;
+    flex: 1;
+}
+#body .contenido .tablas.flex video{
+    height: 250px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+}
 
 #login {
     background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
@@ -413,3 +456,4 @@ text-align: center;
 #login .card #tarjeta{
     background-image:url(../img/debitkarte.svg);
 }
+

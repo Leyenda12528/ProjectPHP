@@ -28,6 +28,25 @@
     </div>
 </div>
 
+<div class="tablas flex">
+    <div class="extras">
+<div class="cal">
+<p class="dia">
+DOM
+</p>
+<p class="fecha">02</p>
+<p class="mes">Oct</p>
+</div>
+<div class="clock">
+    <p class="time">2:16 <span>pm</span></p>
+</div>
+</div>
+<div class="video">
+    <video src="img/planes.mp4" controls></video>
+</div>
+
+</div>
+
 <script type="text/javascript" src = "js/home/cargarHome.js"></script>
 
 @endsection	
