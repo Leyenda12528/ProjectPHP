@@ -23,6 +23,7 @@ Route::post('registerA', 'RegistroSAController@create')->name('registerA.create'
 //Route::get('ciuda','RutaController@index')->name('tutas');
 
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS CLIENTE
 
@@ -82,4 +83,7 @@ Route::post('viajedisponibilidad/cargar','ViajedisponibilidadController@getDispo
 Route::post('viajedisponibilidad/registrar','ViajedisponibilidadController@setDisponibilidad');
 Route::post('viajedisponibilidad/actualizar','ViajedisponibilidadController@updateDisponibilidad');
 
+Route::get('homeadminu', 'RegistroSAController@indexHome')->name('homeadminu')->middleware('auth');
+Route::get('homeadmina', 'AvionController@getCantAvion')->name('homeadmina')->middleware('auth');
+Route::get('homeadminv', 'ViajeController@getCantViajes')->name('homeadminv')->middleware('auth');
 

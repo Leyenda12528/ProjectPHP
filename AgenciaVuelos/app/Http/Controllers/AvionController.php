@@ -32,6 +32,18 @@ class AvionController extends Controller
 
     }
 
+    public function getCantAvion(Request $request)
+    {
+        $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        
+        if($request->ajax()){
+            $cant = Avion::select('id')->get()->count();   
+            return response()->json($cant,200);
+        }
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *

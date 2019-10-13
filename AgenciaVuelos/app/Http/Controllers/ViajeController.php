@@ -40,6 +40,15 @@ class ViajeController extends Controller
         }
 
     }
+    public function getCantViajes(Request $request)
+    {
+        $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        
+        if($request->ajax()){
+            $cant = Viaje::select('id')->get()->count();   
+            return response()->json($cant,200);
+        }
+    }
 
     public function getAviones(Request $request){
         $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');

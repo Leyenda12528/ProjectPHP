@@ -26,11 +26,21 @@ class RegistroSAController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+        public function index(Request $request)
+        {
+            $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+            $users = User::find(RoleUser::select('user_id')->where('role_id',2)->get());
+            return view('Admins', compact('users'));
+        }
+
+        public function indexHome(Request $request)
     {
-        $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
-        $users = User::find(RoleUser::select('user_id')->where('role_id',2)->get());
-        return view('Admins', compact('users'));
+        $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        
+        if($request->ajax()){
+            $cant = User::find(RoleUser::select('user_id')->where('role_id',3)->get())->count();   
+            return response()->json($cant,200);
+        }
     }
 
     /**
