@@ -92,6 +92,18 @@ class ViajeprecioController extends Controller
             
     }
 
+    public function llenarTabla(Request $request){
+        if($request->ajax()){
+            $data = Viajeprecio::join('clasetarifas','clasetarifas.id','viajeprecios.clasetarifa_id')
+            ->join('clases','clases.id','clasetarifas.clase_id')
+            ->join('tarifas','tarifas.id','clasetarifas.tarifa_id')
+            ->select('viajeprecios.id as id','clases.nombre as clase','tarifas.nombre as tarifa')
+            ->where('viaje_id',$request->viaje)
+            ->get();
+            return response()->json($data,200);
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.

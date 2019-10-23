@@ -189,23 +189,19 @@
                     </form>
                 </div>
                 <div id="vuelta" class="tabcontent bounce">
-                    <form class="vuelta flex" action="">
+                    <form class="vuelta flex" action="viajes/viajesDisponibles" method="POST">
+                        @csrf
                         <div class="where">
-                            <div class="campo">
-                                <label for="origen">Desde</label>
-                                <input type="text" name="origen" id="origen"
-                                    placeholder="Nombre de ciudad o aeropuerto" />
+                            <div class="campo mx-auto">
+                                <label for="ruta">Ruta</label>
+                                <select id="ruta" name="ruta"></select>
                             </div>
                             <button class="change">C</button>
-                            <div class="campo">
-                                <label for="origen">Desde</label>
-                                <input type="text" name="destino" id="destino" placeholder="Hacia" />
-                            </div>
                         </div>
                         <div class="when">
                             <div class="campo">
-                                <label for="f-ida">Fecha de salida</label>
-                                <input type="date" name="f-ida" id="f-ida" placeholder="Fecha de ida" />
+                                <label for="fecha">Fecha de salida</label>
+                                <input type="date" name="fecha" id="fecha" placeholder="Fecha de ida" />
                             </div>
                             <!-- <div class="campo">
                                 <label for="f-vuelta">Fecha de regreso</label>
@@ -224,8 +220,8 @@
                             <div class="campo">
                                 <label for="baggage">Clase</label>
                                 <select name="baggage" id="baggage">
-                                    <option value="eco">Economico</option>
-                                    <option value="vip">VIP</option>
+                                    {{-- <option value="eco">Economico</option>
+                                    <option value="vip">VIP</option> --}}
                                 </select>
                             </div>
                         </div>
@@ -466,6 +462,8 @@
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/myjs.js"></script>
+    <script src="js/soloIda/BuscarViajeSoloIda.js"></script>
+    <script src="js/clases.js"></script>
     <script>
      
         new WOW().init();

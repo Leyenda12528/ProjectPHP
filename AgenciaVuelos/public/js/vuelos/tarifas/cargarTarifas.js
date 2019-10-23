@@ -35,10 +35,17 @@ function llenarSelectTarifas(e){
 }
 
 function cargarTarifas(){
-	fetch('http://127.0.0.1:8000/viajeprecios',{
+
+	let data = new FormData();
+	data.append('viaje',vueloGlobal)
+
+	fetch('http://127.0.0.1:8000/viajeprecios/llenarTabla',{
+		method: 'POST',
 		headers:{
-			'X-Requested-With' : 'XMLHttpRequest'
-		}
+			'X-Requested-With' : 'XMLHttpRequest',
+			'X-CSRF-TOKEN' : _token[0].defaultValue
+		},
+		body: data
 	})
 	.then(res=> res.json())
 	.then(data =>{

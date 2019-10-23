@@ -12,6 +12,8 @@ use App\Clasetarifa;
 use App\Clase;
 use App\Tarifa;
 use App\Clasemodelo;
+use App\Precioruta;
+use App\Viajeprecio;
 
 class ViajeController extends Controller
 {
@@ -99,6 +101,82 @@ class ViajeController extends Controller
              else
                 return response()->json($aviones,200);         
         }
+    }
+
+    public function viajesDisponibles(Request $request){
+
+        $ruta = $request->ruta;
+        $fecha = $request->fecha;
+        $pasajeros = $request->passengers;
+        $clase = $request->baggage;
+
+        $data['fecha'] = $fecha;
+        $data['pasajeros'] = $pasajeros;
+
+
+        $ruta1 = Ruta::join('ciudads as co','co.id','rutas.ciudad_origen')
+            ->join('ciudads as cd','cd.id','rutas.ciudad_destino')
+            ->select('rutas.id as id','co.nombre as ciudad_origen','cd.nombre as ciudad_destino')
+            ->where('rutas.id',$ruta)
+            ->first();
+
+        $data['co'] = $ruta1->ciudad_origen;
+        $data['cd'] = $ruta1->ciudad_destino;     
+
+        $viajes = Viaje::where([['fecha',$request->fecha],['ruta_id',$ruta]])->get();
+
+        $data['viajes'] = $viajes;
+ 
+
+        $tarifasVuelos = [];
+        $i = 0;
+        
+
+        foreach ($viajes as $viaje) {
+            $tvs = Viajeprecio::join('clasetarifas','clasetarifas.id','viajeprecios.clasetarifa_id')
+            ->join('clases','clases.id','clasetarifas.clase_id')
+            ->join('tarifas','tarifas.id','clasetarifas.tarifa_id')
+            ->select('viajeprecios.id as id','clases.nombre as clase','tarifas.nombre as tarifa','clasetarifas.id as ctId')
+            ->where('viaje_id',$viaje->id)
+            ->get();
+            $j = 0;
+            foreach ($tvs as $tv) {              
+                $tarifasVuelos[$i][$j] = $tv;
+                $j++;
+            }
+            $i++;
+        }   
+
+        $data['tarifas'] = $tarifasVuelos;
+
+        $preciosTarifa = [];
+        $indice = 0;
+        $i = 0;
+
+
+        foreach ($tarifasVuelos as $tvs) {
+            $j = 0;
+            foreach ($tvs as $tv) {
+                 $pr = Precioruta::join('rutas','rutas.id','preciorutas.ruta_id')
+                    ->join('clasetarifas','clasetarifas.id','preciorutas.clasetarifa_id')
+                    ->join('clases','clases.id','clasetarifas.clase_id')
+                    ->join('tarifas','tarifas.id','clasetarifas.tarifa_id')
+                    ->where('preciorutas.ruta_id',$ruta)
+                    ->where('preciorutas.clasetarifa_id',$tv->ctId)
+                    ->select('preciorutas.id as precioruta_id','clasetarifas.id as clasetarifa_id','clases.nombre as clase','tarifas.nombre as tarifa','preciorutas.precio as precio')
+                    ->first();
+
+                        $preciosTarifa[$i][$j] = $pr;
+                        $j++;
+             
+            }
+            $i++;
+        }
+
+        $data['precios'] = $preciosTarifa;
+
+        return view('viajesDisponibles',compact('data'));
+
     }
 
 

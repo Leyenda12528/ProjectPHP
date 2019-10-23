@@ -73,10 +73,14 @@ Route::post('preciorutas/{precioruta}','PreciorutaController@update1');
 Route::resource('viajes','ViajeController');
 Route::get('viajes/create','ViajeController@getViajes');
 Route::post('viajes/aviones','ViajeController@getAviones');
+Route::post('viajes/viajesDisponibles','ViajeController@viajesDisponibles');
 Route::post('viajes/{viaje}','ViajeController@update1');
+
+
 
 Route::resource('viajeprecios','ViajeprecioController');
 Route::post('viajeprecios/tarifas','ViajeprecioController@getTarifas');
+Route::post('viajeprecios/llenarTabla','ViajeprecioController@llenarTabla');
 Route::post('viajeprecios/{viajeprecios}','ViajeprecioController@update1');
 
 Route::post('viajedisponibilidad/cargar','ViajedisponibilidadController@getDisponibilidad');
