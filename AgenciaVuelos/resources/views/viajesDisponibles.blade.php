@@ -64,7 +64,10 @@
           </p>
         </div>
       </section>
-      <section class="container flex">
+      <div id="alerta" class="d-none">
+        <h2>No hay vuelos disponibles</h2>
+      </div>
+      <section class="container flex" id="main">
         <div class="schedule-show">
           <h2 class="text-center">Datos</h2>
           <div class="flight-info">
@@ -104,6 +107,7 @@
             @endforeach
           </div>
         </div>
+        <p id="vuelos" class="d-none">{{$i}}</p>
         <div class="ticket-zone d-none" id="ticket-zone">
           <div class="ticket">
             <h2>Tu selección</h2>
@@ -240,6 +244,18 @@
     <script src="../js/jquery.counterup.min.js"></script>
     <script src="../js/myjs.js"></script>
     <script>
+      window.onLoad = vuelos()
+
+      function vuelos(){
+        let numVuelos = document.querySelector('#vuelos').innerHTML
+        let main = document.querySelector('#main')
+        let alerta = document.querySelector('#alerta')
+
+        if(numVuelos == 0){
+          main.classList = 'container flex d-none'
+          alerta.classList = 'd-block p-4'
+        }
+      }
       
       document.addEventListener('click',Datos)
 
