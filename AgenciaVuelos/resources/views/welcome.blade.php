@@ -139,56 +139,11 @@
             <hr class="hr" />
             <div class="content wow bounceInRight">
                 <div class="tab-father flex">
-                    <button id="default-tab" class="tab" onclick="openTab(event, 'ida-vuelta')">Ida y vuelta</button>
-                    <button class="tab" onclick="openTab(event, 'vuelta')">Solo ida</button>
+                    <button id="default-tab" class="tab" onclick="openTab(event, 'vuelta')">Solo ida</button>
                     <!-- <button class="tab">Multidestino?</button> -->
                 </div>
             
             <div class="info-form">
-                <div id="ida-vuelta" class="tabcontent">
-                    <form class="ida-vuelta flex" action="">
-                        <div class="where">
-                            <div class="campo">
-                                <label for="origen">Desde</label>
-                                <input type="text" name="origen" id="origen"
-                                    placeholder="Nombre de ciudad o aeropuerto" />
-                            </div>
-                            <button class="change">C</button>
-                            <div class="campo">
-                                <label for="origen">Desde</label>
-                                <input type="text" name="destino" id="destino" placeholder="Hacia" />
-                            </div>
-                        </div>
-                        <div class="when">
-                            <div class="campo">
-                                <label for="f-ida">Fecha de salida</label>
-                                <input type="date" name="f-ida" id="f-ida" placeholder="Fecha de ida" />
-                            </div>
-                            <div class="campo">
-                                <label for="f-vuelta">Fecha de regreso</label>
-                                <input type="date" name="f-vuelta" id="f-vuelta" placeholder="Fecha de vuelta" />
-                            </div>
-                        </div>
-                        <div class="how">
-                            <div class="campo">
-                                <label for="passengers">Pasajeros</label>
-                                <select name="passengers" id="passengers">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="campo">
-                                <label for="baggage">Clase</label>
-                                <select name="baggage" id="baggage">
-                                    <option value="eco">Economico</option>
-                                    <option value="vip">VIP</option>
-                                </select>
-                            </div>
-                        </div>
-                        <input class="btn-gold" type="submit" value="Buscar vuelos">
-                    </form>
-                </div>
                 <div id="vuelta" class="tabcontent bounce">
                     <form class="vuelta flex" action="viajes/viajesDisponibles" method="POST">
                         @csrf

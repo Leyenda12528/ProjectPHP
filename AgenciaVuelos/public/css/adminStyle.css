@@ -457,3 +457,15 @@ font-weight: 700;
     background-image:url(../img/debitkarte.svg);
 }
 
+@media (max-width:768px){
+    #login .card {
+        margin: 0 auto;
+    }   
+    #login .navbar{
+        background: rgba(0, 0, 0, 0.3);
+    }
+    .navbar-collapse li{
+        padding: 20px;
+        text-align: center;
+    }
+}
