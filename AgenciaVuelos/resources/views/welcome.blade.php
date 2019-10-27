@@ -46,7 +46,7 @@
                 @auth
                     <li><a href="#">Bienvenido/a {{ Auth::user()->name }}</a></li>
                 @endauth
-                <li><a href="index.html">Book</a></li>
+                <li><a href="/#book">Book</a></li>
                 <li><a href="promos.html">Promociones</a></li>
                 <li><a href="vuelos.html">About</a></li>
                 <li><a href="#">Contact</a></li>
@@ -134,7 +134,7 @@
         </div>
     </section>
     <main>
-        <div class="container">
+        <div class="container" id="book">
             <h1 class="wow fadeIn">Book now</h1>
             <hr class="hr" />
             <div class="content wow bounceInRight">

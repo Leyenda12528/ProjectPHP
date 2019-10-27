@@ -27,6 +27,28 @@ class ViajeController extends Controller
         $request->user()->Autorizado(['Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
        return view('programarViajes');
     }
+    #------------- Prar los REPORTES
+    public function getReporte(Request $request){
+        $request->user()->Autorizado(['Administrador','Super Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
+        $cantV = Viaje::select('id')->get()->count();   
+        $cantA = Avion::select('id')->get()->count(); 
+        $data = Viaje::join('rutas','rutas.id','viajes.ruta_id')
+            ->join('ciudads as co','co.id','rutas.ciudad_origen')
+            ->join('ciudads as cd','cd.id','rutas.ciudad_destino')
+            ->join('avions','avions.id','viajes.avion_id')
+            ->join('modelos','modelos.id','avions.modelo_id')
+            ->select('viajes.id as viaje_id','viajes.ruta_id as ruta_id','co.nombre as ciudad_origen','cd.nombre as ciudad_destino','viajes.avion_id as avion_id','avions.nombre as avion','viajes.fecha as fecha','viajes.hora as hora','modelos.nombre as modelo')
+            ->orderBy('fecha','asc')
+            ->get();        
+            
+            //return view('tools.pdf', compact('cant'));
+            $view =  \View::make('tools.pdf', compact('cantV','data','cantA'))->render();
+            $pdf = \App::make('dompdf.wrapper');
+            $pdf->loadHTML($view,'UTF-8')->setPaper('a4', 'landscape');
+            return $pdf->stream();
+
+    }    
+    #----------------- fin de REPORTES
 
     public function getViajes(Request $request){
         $request->user()->Autorizado(['Administrador','Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');

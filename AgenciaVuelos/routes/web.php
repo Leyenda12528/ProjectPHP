@@ -35,8 +35,13 @@ Auth::routes();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS ADMIN
+
+// generacion de reportes
+Route::get('Reportes','ViajeController@getReporte')->middleware('auth');
+
+
 //mostrar clientes
-Route::get('clientes', 'UserViewController@index')->name('usersViews');
+Route::get('clientes', 'UserViewController@index')->name('usersViews')->middleware('auth');
 
 Route::resource('tarifas', 'TarifaController');
 Route::post('tarifas/{tarifa}', 'TarifaController@update1');

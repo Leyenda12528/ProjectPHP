@@ -29,13 +29,13 @@
                 </button>
             </div>
             <nav class="main-menu flex">
-                <li><a href="index.html">Book</a></li>
+                <li><a href="http://127.0.0.1:8000/">Inicio</a></li>
                 <li><a href="promos.html">Promociones</a></li>
                 <li><a href="vuelos.html">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="ourteam.html">Our team</a></li>
                 <li><a href="login.html">
-                    <span>
+                    <span>asd
                     <svg class="menu-logo" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <g>

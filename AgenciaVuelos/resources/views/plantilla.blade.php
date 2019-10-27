@@ -26,6 +26,7 @@
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/aviones"><span class="icon"><img src="img/airplane.svg" alt=""></span>Aviones</a></li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/viajes"><span class="icon"><img src="img/passport.svg" alt=""></span>Programar vuelos</a>	</li>
 		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/clientes"><span class="icon"><img src="img/passanger.svg" alt=""></span>Clientes</a>	</li>
+		<li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/Reportes" target="_blank"><span class="icon"><img src="img/pdf.png" alt=""></span>Reportes</a>	</li>
 		
 		@auth
 			<li class="nav-item">
