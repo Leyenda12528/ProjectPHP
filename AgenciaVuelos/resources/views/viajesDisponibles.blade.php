@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/slick.css" />
     <link rel="stylesheet" href="../css/slick-theme.css" />
     <link rel="stylesheet" href="../css/style1.css" />
+    <link rel="shortcut icon" href="{{ asset('img/icon/icono.ico') }}" />
   </head>
   <body class="vuelos">
     <header class="white">
@@ -67,6 +68,7 @@
       <div id="alerta" class="d-none">
         <h2>No hay vuelos disponibles</h2>
       </div>
+      <!-- Pagina-->
       <section class="container flex" id="main">
         <div class="schedule-show">
           <h2 class="text-center">Datos</h2>
@@ -94,7 +96,7 @@
               @php ($j = 0)
               @foreach($data['tarifas'][$i] as $tarifa)
                 <div class="precios flex" data-id="{{$tarifa->ctId}}">
-                <div>
+                <div class="border border-white">
                   <p class="class">{{$tarifa->clase}}/{{$tarifa->tarifa}}</p>
                   <p class="price">{{$data['precios'][$i][$j]->precio}}</p>
                   {{-- <p class="price">{{$tarifa->ctId}}</p> --}}
@@ -108,8 +110,9 @@
           </div>
         </div>
         <p id="vuelos" class="d-none">{{$i}}</p>
+        <!--   TICKET -->
         <div class="ticket-zone d-none" id="ticket-zone">
-          <div class="ticket">
+          <div class="ticket" id="vuvu">
             <h2>Tu selección</h2>
             <p class="pasajero" id="numPasajeros">{{$data['pasajeros']}} Pasajeros</p>
             <div class="ida">
@@ -117,18 +120,57 @@
                 <span><img src="../svg/black-plane.svg" alt="" />Ida</span>
               </p>
               <p>Vuelo número <span id="nVuelo"></span></p>
-              <p>Fecha {{$data['fecha']}}</p>
-              <p>Desde {{$data['co']}}</p>
-              <p>Hacia {{$data['cd']}}</p>
+              <p id="fecha1">Fecha {{$data['fecha']}}</p>
+              <p id="desde">Desde {{$data['co']}}</p>
+              <p id="hacia">Hacia {{$data['cd']}}</p>
               <p>Hora de partida <span id="horaPartida"></span></p>
               <p>Clase/Tarifa: <span id="claseT"></span></p>
               <p>Precio: <span id="precioT"></span></p>
             </div>
-
-            <a href="#" class="btn-redb">Continuar</a>
+            <button type="button" class="btn-redb" data-toggle="modal" data-target="#exampleModal">
+              Comprar Vuelo
+            </button>
+            <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                  <h5 class="modal-title" id="exampleModalLabel">Ingrese contraseña para efectuar comprar y generar el Ticket</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <!---->
+                  <form id='formuV' class="form-group" v-on:submit.prevent="validar">
+                      @csrf
+                      <input type="password" name="contra" id="contra" class="form-control border border-dark" :class = "[clase]" placeholder="Password" required v-model="pass">
+                      <span v-show="clase" class="text-danger">@{{mjs}}</span>
+                      <span v-show="mjs2" class="text-primary">Compra Efectuada <br>@{{mjs2}}</span>
+                      <p class="error" id='mensajeCiudad'></p>
+                      <hr>
+                      <button type="submit" class="btn btn-gold" :class="[ocultar]">Aceptar</button>
+                    </form>
+                    <!--Formu TICKET  <button type="submit" class="btn btn-gold" :class="[ocultar2]" v-on:click="doTicket">Imprimir Ticket</button>-->                    
+                    <form action="http://127.0.0.1:8000/ticket" id="f-ticket" v-on:submit.prevent="doTicket" method="post" target="_blank" :class="[ocultar2]">
+                      @csrf
+                      <button type="submit" class="btn btn-gold">Imprimir Ticket</button>
+                    </form>
+                    <!--Formu TICKET-->
+                  <!---->
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!--fin modal-->
           </div>
         </div>
+        <!--   Fin TICKET -->
       </section>
+
+
+      <!-- Pagina-->
       <footer>
         <div class="container flex">
           <div class="logo"><img src="../img/ogo1.png" alt="" /></div>
@@ -238,68 +280,21 @@
       </footer>
     </div>
 
+    
+    
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/wow.js"></script>
     <script src="../js/jquery.waypoints.min.js"></script>
     <script src="../js/jquery.counterup.min.js"></script>
     <script src="../js/myjs.js"></script>
-    <script>
-      window.onLoad = vuelos()
+    <script src="../js/disponibilidad/datos.js"></script>
 
-      function vuelos(){
-        let numVuelos = document.querySelector('#vuelos').innerHTML
-        let main = document.querySelector('#main')
-        let alerta = document.querySelector('#alerta')
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        if(numVuelos == 0){
-          main.classList = 'container flex d-none'
-          alerta.classList = 'd-block p-4'
-        }
-      }
-      
-      document.addEventListener('click',Datos)
-
-      function Datos(e) {
-
-        if(e.target.classList == 'class' || e.target.classList == 'price'){
-          let clasetarifa = e.target.parentNode.parentNode.getAttribute('data-id');
-          let vuelo = e.target.parentNode.parentNode.parentNode.getAttribute('data-id');
-          let divhora = e.target.parentNode.parentNode.parentNode.getElementsByTagName('div')[2];
-          let hora = divhora.getElementsByTagName('span')[1].innerHTML;
-
-          let horaP = document.querySelector("#horaPartida")
-          let claseT = document.querySelector("#claseT")
-          let precioT = document.querySelector('#precioT')
-          let numPasajeros = document.querySelector('#numPasajeros').innerHTML;
-          let nv = document.querySelector('#nVuelo');
-
-          let ct = '';
-          let p = 0;
-
-          if(e.target.classList == 'class'){
-            ct = e.target.innerHTML;
-            p = e.target.parentNode.getElementsByTagName('p')[1].innerHTML
-            p = parseFloat(numPasajeros) * parseFloat(p)
-          }
-          else{
-
-            ct = e.target.parentNode.getElementsByTagName('p')[0].innerHTML
-            p = e.target.innerHTML
-            p = parseFloat(numPasajeros) * parseFloat(p)
-
-          }
-
-         horaP.innerHTML = hora;
-        claseT.innerHTML = ct;
-        precioT.innerHTML = p;
-        nv.innerHTML = vuelo;
-
-        let ticket = document.querySelector('#ticket-zone')
-
-        ticket.classList = "ticket-zone d-block"
-        }
-          
-      }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../js/tools/ticket.js"></script>
+    
   </body>
 </html>

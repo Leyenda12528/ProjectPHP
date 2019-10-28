@@ -29,7 +29,7 @@ class ViajeController extends Controller
     }
     #------------- Prar los REPORTES
     public function getReporte(Request $request){
-        $request->user()->Autorizado(['Administrador','Super Administrador'],$request->user()->id,'No tiene permisos para acceder a este direccion');
+        $request->user()->Autorizado(['Administrador','Super Administrador', 'Cliente'],$request->user()->id,'No tiene permisos para acceder a este direccion');
         $cantV = Viaje::select('id')->get()->count();   
         $cantA = Avion::select('id')->get()->count(); 
         $data = Viaje::join('rutas','rutas.id','viajes.ruta_id')

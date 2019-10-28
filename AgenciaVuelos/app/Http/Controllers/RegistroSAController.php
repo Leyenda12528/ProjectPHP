@@ -53,7 +53,7 @@ class RegistroSAController extends Controller
   //      $datos = array($request);
 //        $this->validator($datos);
         //return 'que hay de nuevo XD'.$request['name'];
-
+        $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -69,6 +69,47 @@ class RegistroSAController extends Controller
 
         $users = User::find(RoleUser::select('user_id')->where('role_id',2)->get());
         return view('Admins', compact('users','exito'));
+    }
+
+    public function verificarPass(Request $request){
+        $request->user()->Autorizado('Cliente',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        if (Hash::check($request->contra, $request->user()->password)) {
+            $contra = array(
+                'dato' => 1
+            );
+        } else {
+            $contra = array(
+                'dato' => 0
+            );
+        }
+        return response()->json($contra,200);
+    }
+    public function ticket(Request $request){
+        $porciones = explode(" ", $request->pasajeros);
+        $pasajeros = $porciones[0];
+        $precioU = $request->Precio / $pasajeros;
+        $dia = date("Y/m/d H:i:s");
+        $ticket = array(
+            'pasajeros' => $pasajeros,
+            'Vuelo' => $request->NoVuelo,
+            'fecha' => $request->fecha,
+            'desde' => $request->desde,
+            'hacia' => $request->hacia,
+            'horaP' => $request->horaPartida,
+            'claseT' => $request->claseTarifa,
+            'precio' => $precioU,
+            'total' => $request->Precio,
+            'dia' => $dia
+        );  
+        //return response()->json($ticket,200);
+        
+        //return view('tools.ticket', compact('ticket'));
+
+        $view =  \View::make('tools.ticket', compact('ticket'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view,'UTF-8');
+        $pdf->setPaper([0, 0, 566.929, 425.197], 'landscape');
+        return $pdf->stream();
     }
 
     /**

@@ -28,6 +28,9 @@ Route::post('registerA', 'RegistroSAController@create')->name('registerA.create'
 //          RUTAS CLIENTE
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/validarPass','RegistroSAController@verificarPass')->middleware('auth');
+//ticket
+Route::post('/ticket','RegistroSAController@ticket')->middleware('auth');
 
 //LOGIN y REGISTER
 Auth::routes();
@@ -36,9 +39,8 @@ Auth::routes();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS ADMIN
 
-// generacion de reportes
+// Generacion de reportes
 Route::get('Reportes','ViajeController@getReporte')->middleware('auth');
-
 
 //mostrar clientes
 Route::get('clientes', 'UserViewController@index')->name('usersViews')->middleware('auth');
