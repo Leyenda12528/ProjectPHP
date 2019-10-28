@@ -4,7 +4,6 @@
 
 @section('contenido')
 
-
 <div class="tablas one-table">
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
@@ -19,65 +18,54 @@
 					<th>Nombre</th>
 					<th>Email</th>
 					<th>Tarjeta</th>
-					<th>Editar</th>
 					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody id='tablaUsuario'>
-                @foreach ($users as $users)
-                    <tr>
-                        <td>{{$users->name}}</td>
-                        <td>{{$users->email}}</td>
-						<td>{{$users->tarjeta}}</td>
-						<td></td>
-						<td></td>
-                    </tr>
-                @endforeach
+				<tr v-for="user of users">
+					<th>@{{user.name}}</th>
+					<th>@{{user.email}}</th>
+					<th>@{{user.tarjeta}}</th>
+					<th>
+						<div v-on:click="seguro(user)" class="btn btn-danger rounded-circle text-white" >
+							<i class="fas fa-pen"></i>
+						</div>
+					</th>
+				</tr>
 		    </tbody>
-        </table>
+		</table>
+		<!-- Elminiar -->
+		<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="ediLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="ediLabel">Eiminar Cliente: @{{selected.name}}
+                  	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    	<span aria-hidden="true">&times;</span>
+                  	</button>
+				</div>
+				<div class="modal-body">
+					¿ Esta seguro de eliminar a este cliente de forma permanente?
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-danger" v-on:click="eliminar">Aceptar</button>
+					<button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		<form id="formu">
+			<input type="hidden" id="token" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+		</form>
+		<!-- Fin Elminiar -->
     </div>
   
 
 </div>
 </div>
-
-	  <div class="modal fade" id="addPokemon" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        	<div class="tarifasModal">
-        		<h2 id="mensajeEditarTarifa"></h2>
-        		<form id='formularioEditarTarifa' class='form-group'>
-					@csrf
-					@include('tarifas.form')
-					<button type="submit" class="btn btn-gold" id='buttonEditarTarifa'>Editar</button>
-				</form>
-        	</div>
-        	<div class="clasesModal">
-        		<h2 id="mensajeEditarClase"></h2>
-        		<form id='formularioEditarClase' class='form-group'>
-					@csrf
-					@include('clases.form')
-					<button type="submit" id='buttonEditarClase' class="btn btn-gold">Editar</button>
-				</form>
-        	</div>
-        	<div class="ctModal">
-        		<h2 id='mensajeEditarct'></h2>
-        		<form id='formularioEditarCT' class='form-group'>
-        			@include('clasetarifa.form')
-        			<button type="submit" class="btn btn-gold">Editar</button>
-        		</form>
-        	</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<script src="https://kit.fontawesome.com/18e33f708d.js" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ <script src="js/tools/users.js"></script>
 		
 @endsection	
 

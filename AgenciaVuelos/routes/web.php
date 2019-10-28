@@ -44,6 +44,8 @@ Route::get('Reportes','ViajeController@getReporte')->middleware('auth');
 
 //mostrar clientes
 Route::get('clientes', 'UserViewController@index')->name('usersViews')->middleware('auth');
+Route::get('getClientes', 'UserViewController@getClientes')->name('userShow')->middleware('auth');
+Route::post('eliminarCliente', 'UserViewController@deleteCliente')->name('userDelete')->middleware('auth');
 
 Route::resource('tarifas', 'TarifaController');
 Route::post('tarifas/{tarifa}', 'TarifaController@update1');

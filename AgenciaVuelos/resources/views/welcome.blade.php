@@ -47,9 +47,9 @@
                     <li><a href="#">Bienvenido/a {{ Auth::user()->name }}</a></li>
                 @endauth
                 <li><a href="/#book">Book</a></li>
-                <li><a href="promos.html">Promociones</a></li>
-                <li><a href="vuelos.html">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#promos">Promociones</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="ourteam.html">Our team</a></li>
 
                 <div class="dropdown">
@@ -188,7 +188,7 @@
         </div>
     </div>
     </main>
-    <section class="promos">
+    <section class="promos" id="promos">
         <div class="container text-center">
             <p class="hashtag wow bounceIn">#Promos</p>
             <h2 class="wow slideInRight">Descubre buenas promociones</h2>
@@ -256,7 +256,7 @@
                 <a href="promos.html" class="btn-gold">Ver mas</a>
             </div>
     </section>
-    <section class="planes flex">
+    <section class="planes flex" id="about">
         <div class="banner">
             <img src="img/jet.jpg" alt="">
         </div>
@@ -319,7 +319,7 @@
             <a href="faq.html" class="btn-redb">Leer mas</a>
         </div>
     </section>
-    <section class="newsletter">
+    <section class="newsletter" id="contact">
         <div class="container">
         
             <h3 class="wow pulse">Susbcribete a nuestro Newsletter</h3>

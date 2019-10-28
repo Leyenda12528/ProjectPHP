@@ -52,7 +52,6 @@
                                                         <th><h4>Nombre</h4></th>
                                                         <th><h4>Correo electronico</h4></th>
                                                         <th><h4>Tarjeta</h4></th>
-                                                        <th><h4>Editar</h4></th>
                                                         <th><h4>Eliminar</h4></th>
                                                 </strong>
                                             </tr>
@@ -63,7 +62,6 @@
                                                     <td>{{$users->name}}</td>
                                                     <td>{{$users->email}}</td>
                                                     <td>{{$users->tarjeta}}</td>
-                                                    <td></td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach
