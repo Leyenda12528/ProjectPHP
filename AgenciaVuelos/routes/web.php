@@ -19,7 +19,9 @@ Route::get('/', function () {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //          RUTAS SA
 Route::get('registerA', 'RegistroSAController@index')->name('registerA')->middleware('auth');
+Route::get('getAdmins', 'RegistroSAController@getAdmins')->name('registerA.get')->middleware('auth');
 Route::post('registerA', 'RegistroSAController@create')->name('registerA.create')->middleware('auth');
+Route::post('eliminarAdmin', 'RegistroSAController@byeAdmin')->name('registerA.delete')->middleware('auth');
 //Route::get('ciuda','RutaController@index')->name('tutas');
 
 

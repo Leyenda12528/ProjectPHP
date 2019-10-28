@@ -26,12 +26,19 @@ class RegistroSAController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-        public function index(Request $request)
-        {
-            $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
-            $users = User::find(RoleUser::select('user_id')->where('role_id',2)->get());
-            return view('Admins', compact('users'));
-        }
+    public function index(Request $request)
+    {
+        $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        return view('Admins');
+    }
+
+    public function getAdmins(Request $request)
+    {
+        $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        $users = User::find(RoleUser::select('user_id')->where('role_id',2)->get());
+        return response()->json($users,200);
+        
+    }
 
         public function indexHome(Request $request)
     {
@@ -54,6 +61,7 @@ class RegistroSAController extends Controller
 //        $this->validator($datos);
         //return 'que hay de nuevo XD'.$request['name'];
         $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
@@ -66,9 +74,7 @@ class RegistroSAController extends Controller
         $modelo->role_id = 2;           //2-Admin
         $modelo->save();
         $exito = 'Administrador ingresado !!!';
-
-        $users = User::find(RoleUser::select('user_id')->where('role_id',2)->get());
-        return view('Admins', compact('users','exito'));
+        return response()->json("OK",200);
     }
 
     public function verificarPass(Request $request){
@@ -85,6 +91,7 @@ class RegistroSAController extends Controller
         return response()->json($contra,200);
     }
     public function ticket(Request $request){
+        $request->user()->Autorizado('Cliente',$request->user()->id,'No tiene permisos para acceder a este direccion');
         $porciones = explode(" ", $request->pasajeros);
         $pasajeros = $porciones[0];
         $precioU = $request->Precio / $pasajeros;
@@ -110,6 +117,13 @@ class RegistroSAController extends Controller
         $pdf->loadHTML($view,'UTF-8');
         $pdf->setPaper([0, 0, 566.929, 425.197], 'landscape');
         return $pdf->stream();
+    }
+    public function byeAdmin(Request $request)
+    {
+        $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
+        $user = User::where('id',$request->id)->first();
+        $user->delete();
+        return response()->json("OK",200);
     }
 
     /**

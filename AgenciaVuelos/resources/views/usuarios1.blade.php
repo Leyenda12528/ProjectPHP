@@ -28,7 +28,7 @@
 					<th>@{{user.tarjeta}}</th>
 					<th>
 						<div v-on:click="seguro(user)" class="btn btn-danger rounded-circle text-white" >
-							<i class="fas fa-pen"></i>
+							<i class="fas fa-backspace"></i>
 						</div>
 					</th>
 				</tr>
@@ -39,7 +39,7 @@
 			<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="ediLabel">Eiminar Cliente: @{{selected.name}}
+					<h5 class="modal-title" id="ediLabel">Eiminar Cliente: @{{selected.name}}</h5>
                   	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     	<span aria-hidden="true">&times;</span>
                   	</button>

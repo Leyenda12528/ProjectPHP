@@ -1,6 +1,5 @@
-<form method="POST" action="{{ route('registerA.create') }}">
+<form method="POST" action="{{ route('registerA.create') }}" id="f-add" v-on:submit.prevent="agregar">
         @csrf
-
         <div class="form-group row">
             <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
