@@ -60,6 +60,7 @@ class RegistroSAController extends Controller
   //      $datos = array($request);
 //        $this->validator($datos);
         //return 'que hay de nuevo XD'.$request['name'];
+        //return $request->all();
         $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         
         User::create([
@@ -73,8 +74,11 @@ class RegistroSAController extends Controller
         $modelo->user_id = $id_user->id;
         $modelo->role_id = 2;           //2-Admin
         $modelo->save();
-        $exito = 'Administrador ingresado !!!';
-        return response()->json("OK",200);
+        $exito = array(
+            'ok' => 'Administrador ingresado !!!'
+        );
+        
+        return response()->json($exito,200);
     }
 
     public function verificarPass(Request $request){
@@ -123,6 +127,8 @@ class RegistroSAController extends Controller
         $request->user()->Autorizado('Super Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         $user = User::where('id',$request->id)->first();
         $user->delete();
+        $rol= RoleUser::where('user_id',$request->id)->first();
+        $rol->delete();
         return response()->json("OK",200);
     }
 

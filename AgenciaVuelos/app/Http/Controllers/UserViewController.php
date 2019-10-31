@@ -36,6 +36,8 @@ class UserViewController extends Controller
         $request->user()->Autorizado('Administrador',$request->user()->id,'No tiene permisos para acceder a este direccion');
         $user = User::where('id',$request->id)->first();
         $user->delete();
+        $rol= RoleUser::where('user_id',$request->id)->first();
+        $rol->delete();
         return response()->json("OK",200);
     }
 
